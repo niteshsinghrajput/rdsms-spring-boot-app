@@ -1,0 +1,95 @@
+<div class="modal-dialog modal-lg">
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-lg">
+        
+        <div class="modal-content">
+          <form>
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" *ngIf="!user.userId">{{ this.title_add }}</h4>
+            <h4 class="modal-title" *ngIf="user.userId">{{ this.title_update }}</h4>
+            <button type="button" class="close" #closeBtn data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+        
+            <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="forName">Name</label>
+                  <input required [(ngModel)]="user.name" name="forName" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="forEmail">Email</label>
+                  <input required [(ngModel)]="user.email" name="forEmail" class="form-control">
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                  <label for="username">User Name</label>
+                  <input type="text" required [(ngModel)]="user.userName" name="username" class="form-control">
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="passwd">Password</label>
+                  <input type="password" required [(ngModel)]="user.password" name="passwd" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="address">Address</label>
+                <input type="text" required [(ngModel)]="user.address" name="address" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                  <label for="city">City</label>
+                  <input type="text" required [(ngModel)]="user.city" name="city" class="form-control">
+              </div>
+              <div class="form-group" class="form-group col-md-4">
+                  <label for="mobile">Mobile</label>
+                  <input type="text" required [(ngModel)]="user.mobile" name="mobile" class="form-control">
+              </div>
+              <div class="form-group" class="form-group col-md-4">
+                  <label for="role">Role</label>
+                  <select  [(ngModel)]="user.roles[0].roleId" name="role" class="form-control"
+                    placeholder="Select Role">
+                      <option  *ngFor="let role of roles" value="{{role.roleId}}">{{role.roleName}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                  <label for="district">District</label>
+                  <input type="text" required [(ngModel)]="user.district" name="district" class="form-control">
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="postalCode">Postal Code</label>
+                  <input type="text" required [(ngModel)]="user.postalCode" name="postalCode" class="form-control">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="active">Status</label>
+                <select  [(ngModel)]="user.active" name="active" class="form-control">
+                      <option value="true">Enable</option>
+                      <option value="false">Disable</option>
+                </select>
+              </div>
+            </div>
+              
+          </div> <!--body-->
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <input type="button" class="btn btn-primary" [hidden]="!user.userId" (click)="updateUser();" value="Save"/>
+            <input type="button" class="btn btn-primary" [hidden]="user.userId" (click)="addUser();" value="Add" />
+            <input type="button" class="btn btn-primary" value="Reset"/>
+         </div>
+        </form>  
+      </div><!--modal content-->
+    
+    </div>
+  </div>
+
+</div>

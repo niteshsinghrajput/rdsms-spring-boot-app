@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  	<table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+          <tr class="table-success">
+            <th>ID</th>
+            <th>Date</th>
+            <th>Operator</th>
+            <th>Partner</th>
+            <th>Location</th>
+            <th>BNI</th>
+            <th>Chat ID</th>
+            <th>Circle ID</th>
+            <th>Type</th> 
+            <th><a href="#" data-toggle="tooltip" data-placement="top" title="Total Calls">Calls</a></th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let m of mis">
+            <td>{{ m.id }}</td>
+            <td>{{ m.date }}</td>
+            <td>{{ m.operator }}</td>
+            <td>{{ m.partner }}</td>
+            <td>{{ m.location }}</td>
+            <td>{{ m.bni }}</td>
+            <td>{{ m.chatId }}</td>
+            <td>{{ m.circleId }}</td>
+            <td>{{ m.type }}</td>
+            <td>{{ m.totalCalls}}</td>
+            <td *ngIf="m.active">Active</td>
+            <td *ngIf="!m.active">Disabled</td>
+            <td>
+              <button type="button" class="btn btn-default" (click)="onEdit(m);"> <!-- data-toggle="modal" data-target="#myModal"-->
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default" (click)="deleteMisContent(m.id);"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

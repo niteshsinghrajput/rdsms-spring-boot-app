@@ -1,0 +1,13 @@
+nav{
+    margin-top: 5px;
+    background-color: #195a8f;
+    color: white;
+}
+a{
+    color: white;
+}
+
+a:hover{
+    background-color:#2E86C1  ;
+    color: whitesmoke;
+}

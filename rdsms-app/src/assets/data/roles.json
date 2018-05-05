@@ -1,0 +1,17 @@
+[
+    {
+        "roleId":101,
+        "roleName":"Admin",
+        "active":true
+    },
+    {
+        "roleId":102,
+        "roleName":"User",
+        "active":true
+    },
+    {
+        "roleId":103,
+        "roleName":"Customer",
+        "active":true
+    }
+]

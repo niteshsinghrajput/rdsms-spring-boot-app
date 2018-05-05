@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="dsr-bsnl-table" style="overflow-x:auto;"> 
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr class="table-success">
+        <th>ID</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Agent</th>
+        <th>Chat ID</th>
+        <th>Vendor</th>
+        <th>Location</th>
+        <th>LogoutTime</th>
+        <th>LogoutStatus</th>
+        <th>Status</th>
+        <th>Hours</th>
+        <th>Total</th>
+        <th>Success</th>
+        <!--<th>Failed</th>
+        <th>UnAnswered</th>
+        <th>SwitchedOff</th>
+        <th>UserBusy</th>
+        <th>NetworkIssues</th>
+        <th>Mou</th>-->
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let dsr of dsrBsnl">
+        <td>{{ dsr.id }}</td>
+        <td>{{ dsr.currentDate }}</td>
+        <td>{{ dsr.time }}</td>
+        <td>{{ dsr.agentNo }}</td>
+        <td>{{ dsr.chatId }}</td>
+        <td>{{ dsr.vendor }}</td>
+        <td>{{ dsr.location }}</td>
+        <td>{{ dsr.lastLoginLogoutTime }}</td>
+        <td>{{ dsr.lastLoginLogoutStatus }}</td>
+        <td>{{ dsr.status }}</td>
+        <td>{{ dsr.hours }}</td>
+        <td>{{ dsr.totalCalls }}</td>
+        <td>{{ dsr.successCalls }}</td>
+        <!--<td>{{ dsr.failedCalls }}</td>
+        <td>{{ dsr.unAnsweredCalls }}</td>
+        <td>{{ dsr.switchedOff}}</td>
+        <td>{{ dsr.userBusy}}</td>
+        <td>{{ dsr.networkIssue}}</td>
+        <td>{{ dsr.mou}}</td>-->
+        <td *ngIf="dsr.active">Active</td>
+        <td *ngIf="!dsr.active">Disabled</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

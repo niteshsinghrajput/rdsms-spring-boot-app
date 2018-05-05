@@ -1,0 +1,42 @@
+[
+    {
+        "userId": 3,
+        "name": "customer",
+        "email": "cust@gmail.com",
+        "userName": "demo",
+        "password": "demo",
+        "mobile": "9898232324",
+        "address": "Maharajpur",
+        "city": "Mandla",
+        "district": "Mandla",
+        "postalCode": "481661",
+        "roles": [
+            {
+                "roleId": 3,
+                "roleName": "CustomerCare Executive",
+                "active": true
+            }
+        ],
+        "active": true
+    },
+    {
+        "userId": 5,
+        "name": "Nitesh",
+        "email": "nitesh@gmail.com",
+        "userName": "nitesh",
+        "password": "nitesh",
+        "mobile": "9898232324",
+        "address": "BTM",
+        "city": "Bangalore",
+        "district": "Bangalore",
+        "postalCode": "560069",
+        "roles": [
+            {
+                "roleId": 6,
+                "roleName": "Customer",
+                "active": false
+            }
+        ],
+        "active": true
+    }
+]

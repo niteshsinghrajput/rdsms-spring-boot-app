@@ -1,0 +1,18 @@
+h3{
+    text-align: center;
+    color:#195a8f;
+}
+
+header {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 10px;
+    margin-top: 5px;
+    height: 10%;
+}
+
+.header-text{
+    position: inherit;
+   padding: 20px;
+}
+

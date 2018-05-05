@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="roles-table">
+  <div style="float:left;">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    <i class="fa fa-plus" aria-hidden="true"></i></button>
+    <input type="text" id="searchbox" value="Enter Role Name to Search" class="search-box"/>
+    <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+    <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
+      {{ this.message }}
+    </div>
+  </div>
+  <div>
+    <app-role-form 
+          (roleAdded)='saveRoleToList($event);' 
+          (roleUpdated)='updateRoleList($event);'
+          [role]="selectedRole">
+    </app-role-form>
+  </div>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr class="table-success">
+        <th>Role ID</th>
+        <th>Role Name</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let role of roles">
+        <td>{{ role.roleId }}</td>
+        <td>{{ role.roleName }}</td>
+        <td>{{ role.description }}</td>
+        <td *ngIf="role.active">Active</td>
+        <td *ngIf="!role.active">Disabled</td>
+        <td>
+            <button type="button" class="btn btn-default" (click)="onEdit(role);" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-default" (click)="deleteRole(role.roleId);"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
