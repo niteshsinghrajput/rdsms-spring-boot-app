@@ -1,0 +1,348 @@
+[
+    {
+        "candidateId": 1,
+        "name": "Amit ",
+        "fatherName": "NA",
+        "motherName": "NA",
+        "dob": "1998-01-05",
+        "address": "Jabalpur",
+        "landmark": "Railway Station",
+        "city": "Jabalpur",
+        "district": "Jabalpur",
+        "state": "Madhya Pradesh",
+        "postalCode": "480012",
+        "religion": "Hindu",
+        "category": "General",
+        "nationality": "Indian",
+        "knownLanguages": "Hindi",
+        "primaryMobile": "9898989811",
+        "alternateMobile": "9898989822",
+        "photoId": "201",
+        "bank": "State Bank of India",
+        "branch": "Gwarighat",
+        "ifscCode": "SBIN003312",
+        "accountNumber": "2342341",
+        "createdOn": "2018-01-01",
+        "updatedOn": "2018-01-01",
+        "createdBy": {
+            "userId": 5,
+            "name": "Nitesh",
+            "email": "nitesh@gmail.com",
+            "userName": "nitesh",
+            "password": "nitesh",
+            "mobile": "9898232324",
+            "address": "BTM",
+            "city": "Bangalore",
+            "district": "Bangalore",
+            "postalCode": "560069",
+            "roles": [
+                {
+                    "roleId": 6,
+                    "roleName": "Customer",
+                    "active": false
+                }
+            ],
+            "active": true
+        },
+        "updatedBy": {
+            "userId": 5,
+            "name": "Nitesh",
+            "email": "nitesh@gmail.com",
+            "userName": "nitesh",
+            "password": "nitesh",
+            "mobile": "9898232324",
+            "address": "BTM",
+            "city": "Bangalore",
+            "district": "Bangalore",
+            "postalCode": "560069",
+            "roles": [
+                {
+                    "roleId": 6,
+                    "roleName": "Customer",
+                    "active": false
+                }
+            ],
+            "active": true
+        },
+        "rdbranch": {
+            "branchId": 1,
+            "branchName": "Mandla",
+            "address": "Maharajpur",
+            "city": "Mandla",
+            "district": "Mandla",
+            "createdOn": "2018-01-01",
+            "updatedOn": "2018-01-01",
+            "director": {
+                "directorId": 1,
+                "directorName": "Satendra",
+                "photoId": "101",
+                "fatherName": "NA",
+                "dob": "1985-01-01",
+                "primaryMobile": "9898989898",
+                "alternateMobile": "9898989899",
+                "bankName": "State Bank of India",
+                "branchName": "Mandla",
+                "ifscCode": "SBI01234",
+                "accountNumber": "1000123456",
+                "createdOn": "2018-01-01",
+                "updatedOn": "2018-01-01",
+                "createdBy": {
+                    "userId": 3,
+                    "name": "customer",
+                    "email": "cust@gmail.com",
+                    "userName": "demo",
+                    "password": "demo",
+                    "mobile": "9898232324",
+                    "address": "Maharajpur",
+                    "city": "Mandla",
+                    "district": "Mandla",
+                    "postalCode": "481661",
+                    "roles": [
+                        {
+                            "roleId": 3,
+                            "roleName": "CustomerCare Executive",
+                            "active": true
+                        }
+                    ],
+                    "active": true
+                },
+                "updatedBy": {
+                    "userId": 3,
+                    "name": "customer",
+                    "email": "cust@gmail.com",
+                    "userName": "demo",
+                    "password": "demo",
+                    "mobile": "9898232324",
+                    "address": "Maharajpur",
+                    "city": "Mandla",
+                    "district": "Mandla",
+                    "postalCode": "481661",
+                    "roles": [
+                        {
+                            "roleId": 3,
+                            "roleName": "CustomerCare Executive",
+                            "active": true
+                        }
+                    ],
+                    "active": true
+                },
+                "active": true
+            },
+            "createdBy": {
+                "userId": 3,
+                "name": "customer",
+                "email": "cust@gmail.com",
+                "userName": "demo",
+                "password": "demo",
+                "mobile": "9898232324",
+                "address": "Maharajpur",
+                "city": "Mandla",
+                "district": "Mandla",
+                "postalCode": "481661",
+                "roles": [
+                    {
+                        "roleId": 3,
+                        "roleName": "CustomerCare Executive",
+                        "active": true
+                    }
+                ],
+                "active": true
+            },
+            "updatedBy": {
+                "userId": 3,
+                "name": "customer",
+                "email": "cust@gmail.com",
+                "userName": "demo",
+                "password": "demo",
+                "mobile": "9898232324",
+                "address": "Maharajpur",
+                "city": "Mandla",
+                "district": "Mandla",
+                "postalCode": "481661",
+                "roles": [
+                    {
+                        "roleId": 3,
+                        "roleName": "CustomerCare Executive",
+                        "active": true
+                    }
+                ],
+                "active": true
+            },
+            "active": true
+        },
+        "active": true
+    },
+    {
+        "candidateId": 2,
+        "name": "Satendra ",
+        "fatherName": "NA",
+        "motherName": "NA",
+        "dob": "1998-01-05",
+        "address": "Mandla",
+        "landmark": "Maharajpur",
+        "city": "Mandla",
+        "district": "Mandla",
+        "state": "Madhya Pradesh",
+        "postalCode": "480011",
+        "religion": "Hindu",
+        "category": "General",
+        "nationality": "Indian",
+        "knownLanguages": "Hindi",
+        "primaryMobile": "9898989811",
+        "alternateMobile": "9898989822",
+        "photoId": "201",
+        "bank": "State Bank of India",
+        "branch": "Gwarighat",
+        "ifscCode": "SBIN003312",
+        "accountNumber": "2342341",
+        "createdOn": "2018-01-01",
+        "updatedOn": "2018-01-01",
+        "createdBy": {
+            "userId": 5,
+            "name": "Nitesh",
+            "email": "nitesh@gmail.com",
+            "userName": "nitesh",
+            "password": "nitesh",
+            "mobile": "9898232324",
+            "address": "BTM",
+            "city": "Bangalore",
+            "district": "Bangalore",
+            "postalCode": "560069",
+            "roles": [
+                {
+                    "roleId": 6,
+                    "roleName": "Customer",
+                    "active": false
+                }
+            ],
+            "active": true
+        },
+        "updatedBy": {
+            "userId": 5,
+            "name": "Nitesh",
+            "email": "nitesh@gmail.com",
+            "userName": "nitesh",
+            "password": "nitesh",
+            "mobile": "9898232324",
+            "address": "BTM",
+            "city": "Bangalore",
+            "district": "Bangalore",
+            "postalCode": "560069",
+            "roles": [
+                {
+                    "roleId": 6,
+                    "roleName": "Customer",
+                    "active": false
+                }
+            ],
+            "active": true
+        },
+        "rdbranch": {
+            "branchId": 1,
+            "branchName": "Mandla",
+            "address": "Maharajpur",
+            "city": "Mandla",
+            "district": "Mandla",
+            "createdOn": "2018-01-01",
+            "updatedOn": "2018-01-01",
+            "director": {
+                "directorId": 1,
+                "directorName": "Satendra",
+                "photoId": "101",
+                "fatherName": "NA",
+                "dob": "1985-01-01",
+                "primaryMobile": "9898989898",
+                "alternateMobile": "9898989899",
+                "bankName": "State Bank of India",
+                "branchName": "Mandla",
+                "ifscCode": "SBI01234",
+                "accountNumber": "1000123456",
+                "createdOn": "2018-01-01",
+                "updatedOn": "2018-01-01",
+                "createdBy": {
+                    "userId": 3,
+                    "name": "customer",
+                    "email": "cust@gmail.com",
+                    "userName": "demo",
+                    "password": "demo",
+                    "mobile": "9898232324",
+                    "address": "Maharajpur",
+                    "city": "Mandla",
+                    "district": "Mandla",
+                    "postalCode": "481661",
+                    "roles": [
+                        {
+                            "roleId": 3,
+                            "roleName": "CustomerCare Executive",
+                            "active": true
+                        }
+                    ],
+                    "active": true
+                },
+                "updatedBy": {
+                    "userId": 3,
+                    "name": "customer",
+                    "email": "cust@gmail.com",
+                    "userName": "demo",
+                    "password": "demo",
+                    "mobile": "9898232324",
+                    "address": "Maharajpur",
+                    "city": "Mandla",
+                    "district": "Mandla",
+                    "postalCode": "481661",
+                    "roles": [
+                        {
+                            "roleId": 3,
+                            "roleName": "CustomerCare Executive",
+                            "active": true
+                        }
+                    ],
+                    "active": true
+                },
+                "active": true
+            },
+            "createdBy": {
+                "userId": 3,
+                "name": "customer",
+                "email": "cust@gmail.com",
+                "userName": "demo",
+                "password": "demo",
+                "mobile": "9898232324",
+                "address": "Maharajpur",
+                "city": "Mandla",
+                "district": "Mandla",
+                "postalCode": "481661",
+                "roles": [
+                    {
+                        "roleId": 3,
+                        "roleName": "CustomerCare Executive",
+                        "active": true
+                    }
+                ],
+                "active": true
+            },
+            "updatedBy": {
+                "userId": 3,
+                "name": "customer",
+                "email": "cust@gmail.com",
+                "userName": "demo",
+                "password": "demo",
+                "mobile": "9898232324",
+                "address": "Maharajpur",
+                "city": "Mandla",
+                "district": "Mandla",
+                "postalCode": "481661",
+                "roles": [
+                    {
+                        "roleId": 3,
+                        "roleName": "CustomerCare Executive",
+                        "active": true
+                    }
+                ],
+                "active": true
+            },
+            "active": true
+        },
+        "active": true
+    }
+]

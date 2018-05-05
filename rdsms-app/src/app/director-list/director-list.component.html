@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="directors-table"> 
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr class="table-success">
+        <th>ID</th>
+        <th>Name</th>
+        <th>F-Name</th>
+        <th>DOB</th>
+        <th>Mobile 1</th>
+        <th>Mobile 2</th>
+        <th>Bank</th>
+        <th>Branch</th>
+        <th>IFSC</th>
+        <th>Account</th>
+        <!--<th>CreatedOn</th>
+        <th>CreatedBy</th>
+        <th>UpdatedOn</th>
+        <th>UpdatedBy</th>-->
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let director of directors">
+        <td>{{ director.directorId }}</td>
+        <td>{{ director.directorName }}</td>
+        <td>{{ director.fatherName }}</td>
+        <td>{{ director.dob }}</td>
+        <td>{{ director.primaryMobile }}</td>
+        <td>{{ director.alternateMobile }}</td>
+        <td>{{ director.bankName }}</td>
+        <td>{{ director.branchName }}</td>
+        <td>{{ director.ifscCode }}</td>
+        <td>{{ director.accountNumber }}</td>
+        <!--<td>{{ director.createdOn }}</td>
+        <td>{{ director.createdBy.name }}</td>
+        <td>{{ director.updatedOn }}</td>
+        <td>{{ director.updatedBy.name }}</td>-->
+        <td *ngIf="director.active">Active</td>
+        <td *ngIf="!director.active">Disabled</td>
+        <td>
+          <button type="button" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-default"><i class="fa fa-trash" aria-hidden="true"></i></button>  
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

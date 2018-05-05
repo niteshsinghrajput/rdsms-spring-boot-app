@@ -1,0 +1,17 @@
+.roles-table{
+    padding-top: 5px;
+}
+.search-box{
+    border: 2px #195a8f;
+    border-style: solid;
+    height: 36px;
+    width: 300px;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid red;
+}
+
+
+
+
