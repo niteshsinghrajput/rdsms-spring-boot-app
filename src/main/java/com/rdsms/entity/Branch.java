@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Entity
 @Table(name="branch")
@@ -43,9 +44,11 @@ public class Branch implements Serializable {
 	@Column(name="IsActive")
 	private boolean isActive;
 	
+	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="CreatedOn")
 	private Date createdOn;
 	
+	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="UpdatedOn")
 	private Date updatedOn;
 	

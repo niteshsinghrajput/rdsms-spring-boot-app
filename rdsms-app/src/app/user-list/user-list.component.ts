@@ -32,6 +32,8 @@ export class UserListComponent implements OnInit {
   }
 
   updateUserList(event) {
+    console.log('updateUser called for User Id - ' + event.user.userId);
+    this.usersService.updateUser(event.user);
     const msg = 'User [User Id=' + event.user.userId + '] has been updated successfully..!!!';
     console.log(msg);
     this.displayAlert(msg);
@@ -65,6 +67,7 @@ export class UserListComponent implements OnInit {
 
   // display notification
   displayAlert(msg) {
+    this.displayMessage = true;
     console.log('displayAlert called and msg is ... ' + msg);
     this.message = msg;
     setTimeout(() => {
@@ -75,7 +78,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
       console.log('Getting all users from backend...');
-      this.displayMessage = true;
+      this.displayMessage = false;
       this.usersService.getUsers()
       .subscribe(data => this.users = data);
     }

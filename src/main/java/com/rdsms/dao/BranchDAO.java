@@ -57,6 +57,8 @@ public class BranchDAO implements IBranchDAO {
 
 	@Override
 	public Branch updateBranch(int branchId, Branch branch) {
+		
+		System.out.println("Branch Before Update... "+branch);
 		Director director = entityManager.find(Director.class, branch.getDirector().getDirectorId());
 		User createdBy = entityManager.find(User.class, branch.getCreatedBy().getUserId());
 		User updatedBy = entityManager.find(User.class, branch.getUpdatedBy().getUserId());
@@ -71,6 +73,8 @@ public class BranchDAO implements IBranchDAO {
 		existingBranch.setUpdatedBy(updatedBy);
 		existingBranch.setActive(branch.isActive());
 		existingBranch.setCreatedOn(branch.getCreatedOn());
+		
+		System.out.println("After updating the values :::: "+existingBranch);
 		
 		entityManager.flush();
 		Branch br = getBranchById(branchId);

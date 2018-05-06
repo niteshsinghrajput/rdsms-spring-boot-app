@@ -8,9 +8,9 @@ export interface IBranch {
     city: string;
     district: string;
     createdOn: Date;
-    createdBy: IUser;
+    createdBy: any;
     updatedOn: Date;
-    updatedBy: IUser;
-    director: IDirector;
+    updatedBy: any;
+    director: any;
     active: boolean;
 }

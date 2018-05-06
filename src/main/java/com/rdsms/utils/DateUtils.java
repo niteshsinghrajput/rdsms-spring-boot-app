@@ -114,13 +114,11 @@ public class DateUtils {
 		
 		Date date = null;
 		if(dateStr != null) {
-			DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			try {
 				java.util.Date d = formatter.parse(dateStr);
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(d);
-				/*String formatedDate = (cal.get(Calendar.DATE)) + "/" + (cal.get(Calendar.MONTH)+1 ) + "/" + cal.get(Calendar.YEAR) 
-				+ " "+ cal.get(Calendar.HOUR+1)+":"+ cal.get(Calendar.MINUTE) +":"+cal.get(Calendar.SECOND);*/
 				java.util.Date utilDate = cal.getTime();
 				date = new java.sql.Date(utilDate.getTime());
 			}catch(ParseException e) {
@@ -131,8 +129,8 @@ public class DateUtils {
 	}
 	
 	public static void main(String[] args) {
-		String date  = "2018-03-23 09:47:57.0";
-		Timestamp t = convertDate(date);
+		String date  = "2018-03-23";
+		Date t = convertStringToDate(date);
 //		int t = convertStringToTime("1018.0");
 		System.out.println("Time : "+t);
 	}

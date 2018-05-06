@@ -21,6 +21,7 @@ import { DirectorListComponent } from './director-list/director-list.component';
 import { DsrBsnlComponent } from './dsr-bsnl/dsr-bsnl.component';
 import { DsrVodafoneComponent } from './dsr-vodafone/dsr-vodafone.component';
 import { DsrService } from './dsr.service';
+import { BranchFormComponent } from './branch-form/branch-form.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { DsrService } from './dsr.service';
     MisDataListComponent,
     DirectorListComponent,
     DsrBsnlComponent,
-    DsrVodafoneComponent
+    DsrVodafoneComponent,
+    BranchFormComponent
   ],
   imports: [
     BrowserModule,
