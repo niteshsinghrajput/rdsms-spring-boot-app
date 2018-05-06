@@ -141,6 +141,7 @@ public class RdsmsDAO implements IRdsmsDAO {
 		existingUser.setPassword(user.getPassword());
 		existingUser.setPostalCode(user.getPostalCode());
 		existingUser.setRoles(updatedRoles);
+		existingUser.setActive(user.isActive());
 		entityManager.flush();
 		
 		return getUserByUserId(userId);

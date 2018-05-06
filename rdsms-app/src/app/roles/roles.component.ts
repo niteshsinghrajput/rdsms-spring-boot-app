@@ -61,6 +61,7 @@ export class RolesComponent implements OnInit {
   }
 
   displayNotification(msg) {
+    this.displayMessage = true;
     this.message = msg;
     setTimeout(() => {
       this.displayMessage = false;
@@ -71,6 +72,7 @@ export class RolesComponent implements OnInit {
 
   ngOnInit() {
     console.log('getting all roles from backend ...');
+    this.displayMessage = false;
     this.roleService.getRoles()
         .subscribe(data => this.roles = data);
   }

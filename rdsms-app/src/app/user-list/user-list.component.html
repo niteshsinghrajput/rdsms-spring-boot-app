@@ -5,7 +5,7 @@
           <i class="fa fa-plus" aria-hidden="true"></i></button>
           <input type="text" id="searchbox" value="Enter User Name to Search" class="search-box"/>
           <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
-          <div style="float:right;" *ngIf="this.displayMessage && !this.message" class="alert alert-success">
+          <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
             {{ this.message }}
           </div>
       </div>
@@ -23,7 +23,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Username</th>
-        <th>Password</th>
+        <!--<th>Password</th>-->
         <th>Mobile</th>
         <th>Address</th>
         <th>City</th>
@@ -40,7 +40,7 @@
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.userName }}</td>
-        <td>{{ user.password }}</td>
+        <!--<td>{{ user.password }}</td>-->
         <td>{{ user.mobile }}</td>
         <td>{{ user.address }}</td>
         <td>{{ user.city }}</td>
