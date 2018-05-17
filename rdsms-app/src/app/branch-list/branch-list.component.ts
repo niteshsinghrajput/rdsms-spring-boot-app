@@ -37,11 +37,31 @@ export class BranchListComponent implements OnInit {
     this.displayAlert(msg);
     for ( let idx = 0; idx < this.branches.length; idx++) {
       const branch = this.branches[idx];
-      if ( branch.userId === event.branch.branchId) {
+      if ( branch.branchId === event.branch.branchId) {
         this.branches[idx] = event.branch;
         break;
       }
     }
+  }
+
+
+  deleteBranch(branchId) {
+    console.log('deleteBranch called for Branch Id - ' + branchId);
+    this.branchService.deleteBranchById(branchId)
+    .subscribe(successCode => {
+      if (successCode === 200) {
+        const msg = 'Branch [BranchId=' + branchId + '] has been deleted successfully..!!!';
+        console.log(msg);
+        this.displayAlert(msg);
+        for ( let idx = 0; idx < this.branches.length; idx++) {
+          const branch = this.branches[idx];
+          if (branch.branchId === branchId) {
+              this.branches.splice(idx, 1);
+              break;
+          }
+        }
+      }
+    });
   }
 
   // display notification

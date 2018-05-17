@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-sm">
+<div class="modal-dialog modal-lg">
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
       <div class="modal-dialog modal-dialog-centered">
@@ -14,34 +14,42 @@
           <!-- Modal body -->
           <form>
           <div class="modal-body">
-              <div class="form-group">
+              <div class="row">
+              <div class="form-group col-md-6">
                 <label for="branchName">Branch Name *</label>
                 <input required [(ngModel)]="branch.branchName" name="branchName" class="form-control">
               </div>
               
-              <div class="form-group">
+              <div class="form-group col-md-6">
                 <label for="director">Director</label>
-                <select  [(ngModel)]="branch.director" name="role" class="form-control" placeholder="Select Director">
-                  <option  *ngFor="let director of directors" value="{{director.directorId}}"
+                <select  [(ngModel)]="branch.director" name="director" class="form-control"> <!--placeholder="Select Director"-->
+                  <option value="null">Choose a Direc</option>
+                  <option *ngFor="let director of directors" value="{{director.directorId}}"
                   [selected]="branch.director.directorId === director.directorId">
                     {{director.directorName}}
                   </option>
                 </select>
               </div>    
-         
+              </div> <!--end row-->
+              
+            
               <div class="form-group">
                 <label for="address">Address</label>
                 <textarea required  [(ngModel)]="branch.address" name="address" class="form-control" rows="5">
                 </textarea>
               </div>
-              <div class="form-group">
-                  <label for="city">City</label>
-                  <input required [(ngModel)]="branch.city" name="city" class="form-control">
+
+              <div class="row">
+                  <div class="form-group col-md-6">
+                      <label for="city">City</label>
+                      <input required [(ngModel)]="branch.city" name="city" class="form-control">
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="district">District</label>
+                      <input required [(ngModel)]="branch.district" name="district" class="form-control">
+                  </div>
               </div>
-              <div class="form-group">
-                  <label for="district">District</label>
-                  <input required [(ngModel)]="branch.district" name="district" class="form-control">
-              </div>
+              
               <div class="form-group">
                 <label for="active">Status</label>
                 <select  [(ngModel)]="branch.active" name="active" class="form-control">

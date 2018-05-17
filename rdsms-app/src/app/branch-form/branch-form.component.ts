@@ -5,11 +5,12 @@ import { IDirector } from '../director';
 import { DatePipe } from '@angular/common';
 import { DirectorService } from '../director.service';
 
+
 @Component({
   selector: 'app-branch-form',
   templateUrl: './branch-form.component.html',
   styleUrls: ['./branch-form.component.css'],
-  providers: [BranchService, DirectorService]
+  providers: [BranchService, DirectorService, DatePipe]
 })
 export class BranchFormComponent implements OnInit {
 
@@ -29,13 +30,20 @@ export class BranchFormComponent implements OnInit {
   public directors: IDirector[];
   public selectedDirector: IDirector;
 
-  constructor(private branchService: BranchService, private directorService: DirectorService) { }
+  constructor(private branchService: BranchService, private directorService: DirectorService, public datepipe: DatePipe) { }
 
   // add branch
   addBranch() {
     console.log('addBranch in branch-form component..');
     console.log(JSON.stringify(this.branch));
     const branchData = JSON.parse(JSON.stringify(this.branch));
+    branchData.updatedBy = {'userId': 3};
+    branchData.createdBy = {'userId': 3};
+    branchData.createdOn = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+    branchData.updatedOn = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+    const director  =  { 'directorId': branchData.director };
+    branchData.director = director;
+    console.log('Hiii ' + JSON.stringify(branchData));
     if (branchData.active === 'false') {
       branchData.active = false;
     } else {
@@ -95,8 +103,6 @@ export class BranchFormComponent implements OnInit {
     });
   }
 
-
-
   ngOnInit() {
     this.branch = {
       'branchId': 0,
@@ -104,11 +110,11 @@ export class BranchFormComponent implements OnInit {
       'address': 'Enter Address',
       'city': 'Enter City',
       'district': 'Enter District',
-      'createdOn': null,
-      'createdBy': null,
-      'updatedBy': null,
-      'updatedOn': null,
-      'director': null,
+      'createdOn': new Date(),
+      'createdBy': {'userId': 0},
+      'updatedBy': {'userId': 0},
+      'updatedOn': new Date(),
+      'director': {'directorId': 0},
       'active': false
     };
 
