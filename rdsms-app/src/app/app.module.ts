@@ -22,6 +22,7 @@ import { DsrBsnlComponent } from './dsr-bsnl/dsr-bsnl.component';
 import { DsrVodafoneComponent } from './dsr-vodafone/dsr-vodafone.component';
 import { DsrService } from './dsr.service';
 import { BranchFormComponent } from './branch-form/branch-form.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
