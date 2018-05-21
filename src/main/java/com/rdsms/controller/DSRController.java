@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,8 @@ import com.rdsms.utils.DsrVodaExcelUtil;
 @RequestMapping("dsrservice")
 public class DSRController {
 	
+	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(DSRController.class);
+	
 	@Autowired
 	private IDSRService service;
 	
@@ -53,7 +56,7 @@ public class DSRController {
 	}
 	
 	@PostMapping("dsrBsnl")
-	public ResponseEntity<String> uploadDsrBsnlFile(@RequestParam("file") MultipartFile file) {
+	public ResponseEntity<String> uploadDsrBsnlFile(@RequestParam("fileName") MultipartFile file) {
 		
 		String UPLOADED_FOLDER = "./dsr_data/";
 		if(file.isEmpty()) {
@@ -61,6 +64,7 @@ public class DSRController {
 		}
 		try {
 			
+			logger.debug("File Name is {}", file.getName());
 			InputStream in = file.getInputStream();
 			Path path = Paths.get(UPLOADED_FOLDER);
 			String fileLocation = path +"/"+ file.getOriginalFilename();

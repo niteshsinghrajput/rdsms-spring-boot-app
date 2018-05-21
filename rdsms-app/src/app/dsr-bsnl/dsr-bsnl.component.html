@@ -1,4 +1,28 @@
 <div class="container-fluid">
+    <div class="panel panel-default">
+      <!--<form>-->
+      <table>
+        <tr>
+            <td><label for="dsr_bsnl">Select DSR BSNL File</label></td>
+            <td>
+                <input type="file" [(ngModel)]="fileName" name="fileName" 
+                (change)="selectFile($event);" class="form-control-file"> 
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm"(click)="uploadDsr();">
+                Upload
+              </button>
+            </td>
+            <td>
+                <div *ngIf="this.displayMessage" class="alert alert-success">
+                    {{ this.message }}
+                </div>
+            </td>
+        </tr>
+      </table>
+    <!--</form>-->
+    
+   </div>
   <div class="dsr-bsnl-table" style="overflow-x:auto;"> 
   <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
@@ -22,7 +46,7 @@
         <th>UserBusy</th>
         <th>NetworkIssues</th>
         <th>Mou</th>-->
-        <th>Active</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -45,9 +69,14 @@
         <td>{{ dsr.switchedOff}}</td>
         <td>{{ dsr.userBusy}}</td>
         <td>{{ dsr.networkIssue}}</td>
-        <td>{{ dsr.mou}}</td>-->
+        <td>{{ dsr.mou}}</td>
         <td *ngIf="dsr.active">Active</td>
-        <td *ngIf="!dsr.active">Disabled</td>
+        <td *ngIf="!dsr.active">Disabled</td>-->
+        <td>
+          <button type="button" class="btn btn-default btn-sm" (click)="showDetails(dsr);" 
+              data-toggle="modal" data-target="#myModal"> <span style="font-size: small;">Details</span>
+          </button>
+      </td>
       </tr>
     </tbody>
   </table>

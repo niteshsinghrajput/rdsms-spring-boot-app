@@ -6,14 +6,24 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import org.slf4j.Logger;
+
+/**
+ * 
+ * @author Nitesh
+ *
+ */
 
 public class DateUtils {
+	
+	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(DateUtils.class);
 	
 	public static Date toSqlDate(String dateStr) {
 		
 		Date sqlDate = null ;
 		
 		if(dateStr != null) {
+			logger.debug("Date which needs to be converted : {} ", dateStr);
 			SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
 			java.util.Date utilDate;
 			try {
@@ -24,7 +34,7 @@ public class DateUtils {
 				String formatedDate = cal.get(Calendar.DATE) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" +         cal.get(Calendar.YEAR);
 				utilDate = sdf1.parse(formatedDate);
 				sqlDate = new java.sql.Date(utilDate.getTime()); 
-				
+				logger.debug("Converted Date is : {} ", sqlDate);
 				return sqlDate;
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -114,7 +124,7 @@ public class DateUtils {
 		
 		Date date = null;
 		if(dateStr != null) {
-			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 			try {
 				java.util.Date d = formatter.parse(dateStr);
 				Calendar cal = Calendar.getInstance();
@@ -129,7 +139,7 @@ public class DateUtils {
 	}
 	
 	public static void main(String[] args) {
-		String date  = "2018-03-23";
+		String date  = "20180323";
 		Date t = convertStringToDate(date);
 //		int t = convertStringToTime("1018.0");
 		System.out.println("Time : "+t);

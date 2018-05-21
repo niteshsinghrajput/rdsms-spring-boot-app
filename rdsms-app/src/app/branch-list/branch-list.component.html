@@ -10,15 +10,14 @@
               {{ this.message }}
             </div>
         </div>
-        <div>
+        <div style="float:left;">
             <app-branch-form 
                   (branchAdded)='saveBranchToList($event);' 
                   (branchUpdated)='updateBranchList($event);'
                   [branch]="selectedBranch">
             </app-branch-form>
         </div>
-
-
+      
     <table class="table table-striped table-bordered table-hover table-condensed">
       <thead>
         <tr class="table-success">

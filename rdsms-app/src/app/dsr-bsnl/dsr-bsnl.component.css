@@ -4,9 +4,17 @@
 
 th{
     white-space: nowrap;
+    font-size: small;
+   
 }
 
 tr{
     white-space: nowrap;
+    font-size: small;
+    
 }
 
+.panel{
+    border: 1px slategrey solid;
+    padding: 1px;
+}
