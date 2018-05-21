@@ -64,6 +64,8 @@ export class BranchFormComponent implements OnInit {
   updateBranch() {
     console.log('updateBranch called...!!!' + JSON.stringify(this.branch));
     const branchData = JSON.parse(JSON.stringify(this.branch));
+    const director  =  { 'directorId': branchData.director };
+    branchData.director = director;
     if (branchData.active === 'true') {
       branchData.active = true;
     } else {
@@ -129,13 +131,13 @@ export class BranchFormComponent implements OnInit {
       'address': 'Enter Address',
       'city': 'Enter City',
       'district': 'Enter District',
-      'createdOn': null,
-      'createdBy': null,
-      'updatedBy': null,
-      'updatedOn': null,
-      'director': null,
+      'createdOn': new Date(),
+      'createdBy': {'userId': 0},
+      'updatedBy': {'userId': 0},
+      'updatedOn': new Date(),
+      'director': {'directorId': 0},
       'active': false
-  };
+    };
 }
 
 }

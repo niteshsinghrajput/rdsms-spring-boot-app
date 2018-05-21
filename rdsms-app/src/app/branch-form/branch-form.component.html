@@ -23,7 +23,6 @@
               <div class="form-group col-md-6">
                 <label for="director">Director</label>
                 <select  [(ngModel)]="branch.director" name="director" class="form-control"> <!--placeholder="Select Director"-->
-                  <option value="null">Choose a Direc</option>
                   <option *ngFor="let director of directors" value="{{director.directorId}}"
                   [selected]="branch.director.directorId === director.directorId">
                     {{director.directorName}}
