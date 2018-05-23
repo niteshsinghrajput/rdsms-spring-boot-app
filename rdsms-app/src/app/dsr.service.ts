@@ -37,6 +37,18 @@ export class DsrService {
       .catch(this.handleError);
   }
 
+  uploadVodaDsrData(file: File) {
+    console.log('uploading vodafone dsr data ..' + file);
+    const headers = new Headers();
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(this.endpoint + '/dsrVodafone', formData, options)
+            .map(success => success.status)
+            .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     const body = res.json();
     // console.log('Response is : ' + JSON.stringify(body));

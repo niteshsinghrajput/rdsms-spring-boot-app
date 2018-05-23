@@ -15,6 +15,9 @@ tr{
 }
 
 .panel{
-    border: 1px slategrey solid;
-    padding: 1px;
+    border: 2px slategrey solid;
+    font-family: 'Times New Roman', Times, serif;
+    background-color:lightgray;
+    padding: 4px;
+    margin: 2px;
 }

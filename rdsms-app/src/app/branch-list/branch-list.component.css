@@ -1,3 +1,15 @@
 .branches-table{
     padding-top: 5px;
 }
+
+th{
+    white-space: nowrap;
+    font-size: small;
+   
+}
+
+tr{
+    white-space: nowrap;
+    font-size: small;
+    
+}
