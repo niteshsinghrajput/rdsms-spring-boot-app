@@ -1,3 +1,20 @@
 .users-table{
     padding-top: 5px;
 }
+
+th{
+    white-space: nowrap;
+    font-size: small;
+}
+tr{
+    white-space: nowrap;
+    font-size: small;
+}
+
+.search-box{
+    border: 2px #195a8f;
+    border-style: solid;
+    height: 36px;
+    width: 250px;
+    font-size: small
+}

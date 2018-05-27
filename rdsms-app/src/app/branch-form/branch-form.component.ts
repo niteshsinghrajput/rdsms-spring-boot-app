@@ -121,6 +121,7 @@ export class BranchFormComponent implements OnInit {
     };
 
     this.directorService.getDirectors().subscribe(data => this.directors = data);
+    console.log(this.directors);
   }
 
   private closeModal(): void {

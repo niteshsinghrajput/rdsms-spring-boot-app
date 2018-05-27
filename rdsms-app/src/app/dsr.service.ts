@@ -17,13 +17,9 @@ export class DsrService {
 
   uploadBsnlDsrData(file: File) {
     console.log('uploading bsnl dsr data ..' + file);
-    // const cpHeaders = new Headers({ 'Content-Type': undefined });
     const headers = new Headers();
     const formData: FormData = new FormData();
     formData.append('fileName', file, file.name);
-
-    // const cpHeaders = new Headers();
-    // cpHeaders.append('Content-Type', 'multipart/form-data');
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.endpoint + '/dsrBsnl', formData, options)
             .map(success => success.status)
@@ -45,13 +41,12 @@ export class DsrService {
 
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.endpoint + '/dsrVodafone', formData, options)
-            .map(success => success.status)
-            .catch(this.handleError);
+      .map(success => success.status)
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {
     const body = res.json();
-    // console.log('Response is : ' + JSON.stringify(body));
     return body;
   }
 

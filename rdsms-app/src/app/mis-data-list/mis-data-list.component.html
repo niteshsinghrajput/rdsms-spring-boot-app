@@ -1,4 +1,25 @@
 <div class="container-fluid">
+    <div class="panel panel-default">
+        <table>
+          <tr>
+              <td><label for="mis">Select MIS File</label></td>
+              <td>
+                  <input type="file" [(ngModel)]="fileName" name="fileName" 
+                  (change)="selectFile($event);" class="form-control-file"> 
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm"(click)="uploadDsr();">
+                  Upload
+                </button>
+              </td>
+              <td>
+                  <div *ngIf="this.displayMessage" class="alert alert-success">
+                      {{ this.message }}
+                  </div>
+              </td>
+          </tr>
+        </table>
+     </div>
   	<table class="table table-striped table-bordered table-hover table-condensed">
         <thead>
           <tr class="table-success">
@@ -30,11 +51,11 @@
             <td>{{ m.totalCalls}}</td>
             <td *ngIf="m.active">Active</td>
             <td *ngIf="!m.active">Disabled</td>
-            <td>
-              <button type="button" class="btn btn-default" (click)="onEdit(m);"> <!-- data-toggle="modal" data-target="#myModal"-->
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
+           <td>
+              <button type="button" class="btn btn-default" (click)="showDetail(m);"> <!-- data-toggle="modal" data-target="#myModal"-->
+                <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
-                <button type="button" class="btn btn-default" (click)="deleteMisContent(m.id);"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              <!--  <button type="button" class="btn btn-default" (click)="deleteMisContent(m.id);"><i class="fa fa-trash" aria-hidden="true"></i></button> -->
             </td>
           </tr>
         </tbody>

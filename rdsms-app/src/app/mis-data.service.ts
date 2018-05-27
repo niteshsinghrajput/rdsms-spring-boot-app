@@ -20,7 +20,16 @@ export class MisDataService {
     .catch(this.handleError);
   }
 
-
+  uploadMISData(file: File) {
+    console.log('uploading MIS Data ..' + file);
+    const headers = new Headers();
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(this.endpoint, formData, options)
+      .map(success => success.status)
+      .catch(this.handleError);
+  }
 
   private extractData(res: Response) {
     const body = res.json();

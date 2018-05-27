@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * 
@@ -36,6 +37,7 @@ public class Candidate implements Serializable {
 	private String fatherName;
 	@Column(name="MotherName")
 	private String motherName;
+	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="DOB")
 	private Date dob;
 	@Column(name="Address")
@@ -74,8 +76,11 @@ public class Candidate implements Serializable {
 	private String accountNumber;
 	@Column(name="IsActive")
 	private boolean isActive;
+	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="createdOn")
 	private Date createdOn;
+	
+	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="updatedOn")
 	private Date updatedOn;
 	
