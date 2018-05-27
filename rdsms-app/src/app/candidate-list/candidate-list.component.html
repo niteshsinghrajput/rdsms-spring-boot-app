@@ -1,14 +1,32 @@
 <div class="container-fluid">
   <div class="candidates-table" style="overflow-x:auto;">
+
+      <div style="float:left;">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myCandidateModal" (click)="onAddNew();">
+          <i class="fa fa-plus" aria-hidden="true"></i></button>
+          <input type="text" id="searchbox" value="Enter Candidate Name to Search" class="search-box"/>
+          <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
+            {{ this.message }}
+          </div>
+      </div>
+      <div style="float:left;">
+          <app-candidate-form
+                (candidateAdded)='saveCandidateToList($event);' 
+                (candidateUpdated)='updateCandidateList($event);'
+                [candidate]="selectedCandidate">
+          </app-candidate-form>
+      </div>
+
 	<table class="table table-striped table-bordered table-hover table-condensed">
       <tr class="table-success">
         <th>ID</th>
         <th>Name</th>
         <th>Father Name</th>
-        <th>Mother Name</th>
+        <!--<th>Mother Name</th>-->
         <th>DOB</th>
-        <th>Address</th>
-        <th>Landmark</th>
+        <!--<th>Address</th>
+        <th>Landmark</th>-->
         <th>City</th>
         <th>District</th>
         <th>State</th>
@@ -16,19 +34,19 @@
         <th>RD Branch</th>
         <th>Religion</th>
         <th>Category</th>
-        <th>Nationality</th>
-        <th>Known Languages</th>
+        <!--<th>Nationality</th>-->
+        <th>Languages</th>
         <th>Mobile</th>
-        <th>Alt. Mobile</th>
+        <!--<th>Alt. Mobile</th>
         <th>Photo ID</th>
         <th>Bank</th>
         <th class="col-xs-9">Branch</th>
         <th>IFSC</th>
         <th>Account</th>
-        <th>CreatedOn</th>
+        <!--<th>CreatedOn</th>
         <th>CreatedBy</th>
         <th>UpdatedOn</th>
-        <th>UpdatedBy</th>
+        <th>UpdatedBy</th>-->
         <th>Status</th>
         <th>Actions</th>
       </tr>
@@ -36,10 +54,10 @@
         <td>{{ candidate.candidateId }}</td>
         <td>{{ candidate.name }}</td>
         <td>{{ candidate.fatherName }}</td>
-        <td>{{ candidate.motherName }}</td>
+        <!--<td>{{ candidate.motherName }}</td>-->
         <td>{{ candidate.dob }}</td>
-        <td>{{ candidate.address }}</td>
-        <td>{{ candidate.landmark }}</td>
+        <!--<td>{{ candidate.address }}</td>
+        <td>{{ candidate.landmark }}</td>-->
         <td>{{ candidate.city }}</td>
         <td>{{ candidate.district }}</td>
         <td>{{ candidate.state }}</td>
@@ -47,24 +65,26 @@
         <td>{{ candidate.rdbranch.branchName }}</td>
         <td>{{ candidate.religion }}</td>
         <td>{{ candidate.category }}</td>
-        <td>{{ candidate.nationality }}</td>
+        <!--<td>{{ candidate.nationality }}</td>-->
         <td>{{ candidate.knownLanguages }}</td>
         <td>{{ candidate.primaryMobile }}</td>
-        <td>{{ candidate.alternateMobile }}</td>
+        <!--<td>{{ candidate.alternateMobile }}</td>
         <td>{{ candidate.photoId }}</td>
         <td>{{ candidate.bank }}</td>
         <td>{{ candidate.branch }}</td>
         <td>{{ candidate.ifscCode }}</td>
         <td>{{ candidate.accountNumber }}</td>
-        <td>{{ candidate.createdOn }}</td>
+        <!--<td>{{ candidate.createdOn }}</td>
         <td>{{ candidate.createdBy.name }}</td>
         <td>{{ candidate.updatedOn }}</td>
-        <td>{{ candidate.updatedBy.name }}</td>
+        <td>{{ candidate.updatedBy.name }}</td>-->
         <td *ngIf="candidate.active">Active</td>
         <td *ngIf="!candidate.active">Disabled</td>
         <td>
-          <button type="button" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-          <button type="button" class="btn btn-default"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default" (click)="onCandidateEdit(candidate);" data-toggle="modal" data-target="#myCandidateModal">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-default" (click)="deleteCandidate(candidate.candidateId);"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </td>
       </tr>
   </table>

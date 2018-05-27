@@ -1,4 +1,5 @@
 import { IUser } from './user';
+import { IBranch } from './branch';
 
 export interface ICandidate {
     candidateId: number;
@@ -18,13 +19,15 @@ export interface ICandidate {
     knownLanguages: string;
     primaryMobile: string;
     alternateMobile: string;
+    rdbranch: any;
     photoId: number;
     bank: string;
     branch: string;
     ifscCode: string;
     accountNumber: string;
     createdOn: Date;
-    createdBy: IUser;
+    createdBy: any;
     updatedOn: Date;
-    updatedBy: IUser;
+    updatedBy: any;
+    active: boolean;
 }

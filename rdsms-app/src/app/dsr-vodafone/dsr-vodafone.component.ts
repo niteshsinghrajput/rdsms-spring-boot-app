@@ -46,7 +46,7 @@ export class DsrVodafoneComponent implements OnInit {
           this.displayAlert(this.message);
           this.getDSR();
         }
-        if (successCode === 400){
+        if (successCode === 400) {
           this.message = 'Problem occured while upload Vodafone DSR ( ' + this.selectedFile.name + ')';
           this.displayAlert(this.message);
           this.getDSR();

@@ -11,21 +11,65 @@ export class MisDataListComponent implements OnInit {
 
   public mis: IMis[];
   selectedMIS: IMis;
+  selectedFile: File = null;
+  message: String = null;
+  displayMessage = false;
+
 
   constructor(private misService: MisDataService) { }
 
-  onEdit(misContent) {
-    console.log('onEdit function of mis-data component called...!!!');
+  showDetail(misContent) {
+    console.log('showDetail function of mis-data component called...!!!');
     console.log(JSON.stringify(misContent));
     this.selectedMIS = JSON.parse(JSON.stringify(misContent));
+  }
+
+  selectFile(event) {
+    if (event.target.files.length > 0 ) {
+      console.log(event.target.files[0]);
+      this.selectedFile = event.target.files[0];
+    }
   }
 
   deleteMisContent(misId) {
     console.log('deleteMisContent called for MIS Id - ' + misId);
   }
+
+  uploadDsr() {
+    console.log('UploadDsr called ... ' + this.selectedFile);
+    this.misService.uploadMISData(this.selectedFile)
+    .subscribe(successCode => {
+      if (successCode === 200) {
+        this.message = 'MIS Data File (' + this.selectedFile.name + ') has been uploaded Successfully...!!';
+        console.log(this.message);
+        this.displayAlert(this.message);
+        this.getMISData();
+      }
+      if (successCode === 400){
+        this.message = 'Problem occured while upload MIS Data File ( ' + this.selectedFile.name + ')';
+        this.displayAlert(this.message);
+        this.getMISData();
+      }
+    });
+}
+
+  // display notification
+  displayAlert(msg) {
+    this.displayMessage = true;
+    console.log('displayAlert called and msg is ... ' + msg);
+    this.message = msg;
+    setTimeout(() => {
+      this.displayMessage = false;
+      this.message = '';
+    }, 5000);
+  }
+
+  getMISData() {
+    this.misService.getMisData().subscribe(data => this.mis = data);
+  }
   ngOnInit() {
     console.log('Getting data from mis-data service..');
-    this.misService.getMisData().subscribe(data => this.mis = data);
+    this.getMISData();
   }
 
 }

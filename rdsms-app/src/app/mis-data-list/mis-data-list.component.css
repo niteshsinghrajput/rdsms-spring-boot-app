@@ -1,0 +1,19 @@
+th{
+    white-space: nowrap;
+    font-size: small;
+   
+}
+
+tr{
+    white-space: nowrap;
+    font-size: small;
+    
+}
+
+.panel{
+    border: 2px slategrey solid;
+    font-family: 'Times New Roman', Times, serif;
+    background-color:lightgray;
+    padding: 4px;
+    margin: 2px;
+}
