@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="operators-table"> 
+
+      <div style="float:left;">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#operatorModal" (click)="onAddNew();">
+          <i class="fa fa-plus" aria-hidden="true"></i></button>
+          <input type="text" id="searchbox" value="Enter Operator Name to Search" class="search-box"/>
+          <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
+            {{ this.message }}
+          </div>
+      </div>
+
+      <div style="float:left;">
+          <app-operator-form
+                (operatorAdded)='saveOperatorToList($event);' 
+                (operatorUpdated)='updateOperatorList($event);'
+                [operator]="selectedOperator">
+          </app-operator-form>
+      </div>
+
+      <table class="table table-striped table-bordered table-hover table-condensed">
+          <thead>
+            <tr class="table-success">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Created By</th>
+              <th>Created On</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let operator of operators">
+              <td>{{ operator.operatorId }}</td>
+              <td>{{ operator.operatorName }}</td>
+              <td>{{ operator.description }}</td>
+              <td>{{ operator.createdBy.name }}</td>
+              <td>{{ operator.createdOn }}</td>
+              <td *ngIf="operator.active">Active</td>
+              <td *ngIf="!operator.active">Disabled</td>
+              <td>
+                <button type="button" class="btn btn-default" (click)="onOperatorEdit(operator);" data-toggle="modal" data-target="#operatorModal">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default" (click)="deleteOperator(operator.operatorId);">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

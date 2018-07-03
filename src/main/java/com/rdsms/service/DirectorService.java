@@ -24,17 +24,22 @@ public class DirectorService implements IDirectorService {
 
 	@Override
 	public Director addDirector(Director director) {
-		return null;
+		return dao.addDirector(director);
 	}
 
 	@Override
 	public Director updateDirector(int directorId, Director director) {
-		return null;
+		return dao.updateDirector(directorId, director);
 	}
 
 	@Override
 	public boolean deleteDirector(int directorId) {
-		return false;
+		return dao.deleteDirector(directorId);
+	}
+	
+	@Override
+	public Director getDirectorById(int directorId) {
+		return dao.getDirectorById(directorId);
 	}
 
 }

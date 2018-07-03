@@ -64,5 +64,17 @@
         "menuName":"MIS",
         "menuLink":"/mis",
         "isActive":true
+    },
+    {
+        "menuId":112,
+        "menuName":"Operators",
+        "menuLink":"/operator",
+        "isActive":true
+    },
+    {
+        "menuId":113,
+        "menuName":"Operator Types",
+        "menuLink":"/operatortypes",
+        "isActive":true
     }
 ]

@@ -1,0 +1,81 @@
+<div class="modal-dialog modal-lg">
+  <!-- The Modal -->
+  <div class="modal fade" id="directorModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header"> <!--this.title_add this.title_update-->
+        <h6 class="modal-title" *ngIf="director.directorId===0">{{ this.title_add }}</h6>
+          <h6 class="modal-title" *ngIf="director.directorId!=0">{{ this.title_update }}</h6>
+          <button type="button" class="close" #closeBtn data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <form>
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="directorName"> Name *</label>
+              <input required [(ngModel)]="director.directorName" name="directorName" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="fatherName"> Father's Name *</label>
+                <input required [(ngModel)]="director.fatherName" name="fatherName" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+              <div class="form-group col-md-6">
+                  <label for="dob"> DOB </label>
+                  <input required [(ngModel)]="director.dob" name="dob" class="form-control">
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="primaryMobile"> Primary Mobile </label>
+                  <input required [(ngModel)]="director.primaryMobile" name="primaryMobile" class="form-control">
+              </div>
+          </div>
+          <div class="row">  
+              <div class="form-group col-md-6">
+                  <label for="alternateMobile"> Alternate Mobile  </label>
+                  <input required [(ngModel)]="director.alternateMobile" name="alternateMobile" class="form-control">
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="accountNumber">Account Number</label>
+                  <input required  [(ngModel)]="director.accountNumber" name="accountNumber" class="form-control">
+              </div>
+          </div>
+          <div class="row">
+              <div class="form-group col-md-6">
+                  <label for="bankName">Bank Name</label>
+                  <input required  [(ngModel)]="director.bankName" name="bankName" class="form-control">
+              </div>
+              <div class="form-group col-md-6">
+                    <label for="branchName"> Branch Name </label>
+                    <input required [(ngModel)]="director.branchName" name="branchName" class="form-control">
+              </div>
+          </div>
+          <div class="row"> 
+              <div class="form-group col-md-6">
+                  <label for="ifscCode">IFSC Code</label>
+                  <input required [(ngModel)]="director.ifscCode" name="ifscCode" class="form-control">
+              </div> 
+              <div class="form-group col-md-6">
+                  <label for="active">Status</label>
+                  <select  [(ngModel)]="director.active" name="active" class="form-control">
+                        <option value="true">Enable</option>
+                        <option value="false">Disable</option>
+                  </select>
+              </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <input type="button" class="btn btn-primary" [hidden]="!director.directorId" (click)="updateDirector();" value="Save"/>
+          <input type="button" class="btn btn-primary" [hidden]="director.directorId" (click)="addDirector();" value="Add" />
+          <input type="button" class="btn btn-primary" value="Reset"/>
+        </div> 
+      </form>  
+      </div>
+    </div>
+  </div>
+</div>

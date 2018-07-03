@@ -23,9 +23,15 @@ export class CandidateListComponent implements OnInit {
   }
 
   saveCandidateToList(event) {
-    this.candidateService.createCandidate(event.candidate);
-    console.log('Candidate has been added successfully..!!' + event.candidate.name);
+    console.log('Candidate ' + event.candidate.name + ' has been added successfully..!!');
+    this.getCandidates();
     this.displayAlert('Candidate has been added successfully..!!');
+  }
+
+  updateCandidateList(event) {
+    console.log('Candidate ' + event.candidate.name + 'has been updated successfully..!!');
+    this.getCandidates();
+    this.displayAlert('Candidate has been updated successfully..!!');
   }
 
   deleteCandidate(candidateId) {
@@ -36,16 +42,9 @@ export class CandidateListComponent implements OnInit {
         const msg = 'Candidate [CandidateId=' + candidateId + '] has been deleted successfully..!!!';
         console.log(msg);
         this.displayAlert(msg);
-        for ( let idx = 0; idx < this.candidates.length; idx++) {
-          const candidate = this.candidates[idx];
-          if (candidate.branchId === candidateId) {
-              this.candidates.splice(idx, 1);
-              break;
-          }
-        }
+        this.getCandidates();
       }
     });
-    this.getCandidates();
   }
 
   // display notification
@@ -71,6 +70,7 @@ export class CandidateListComponent implements OnInit {
       'updatedOn': new Date(), 'createdBy': {'userId': 0 }, 'updatedBy': { 'userId': 0 },
       'rdbranch': {'branchId': 0}, 'active': true
       };
+      console.log(this.selectedCandidate);
   }
 
   ngOnInit() {

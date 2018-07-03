@@ -8,6 +8,8 @@ import { DirectorListComponent } from './director-list/director-list.component';
 import { MisDataListComponent } from './mis-data-list/mis-data-list.component';
 import { DsrBsnlComponent } from './dsr-bsnl/dsr-bsnl.component';
 import { DsrVodafoneComponent } from './dsr-vodafone/dsr-vodafone.component';
+import { OperatorComponent } from './operator/operator.component';
+import { OperatortypeComponent } from './operatortype/operatortype.component';
 
 const routes: Routes = [
     {path: '', redirectTo: 'users' , pathMatch: 'full'},
@@ -18,7 +20,9 @@ const routes: Routes = [
     {path: 'directors', component: DirectorListComponent},
     {path: 'mis', component: MisDataListComponent},
     {path: 'dsrBsnl', component: DsrBsnlComponent},
-    {path: 'dsrVodafone', component: DsrVodafoneComponent}
+    {path: 'dsrVodafone', component: DsrVodafoneComponent},
+    {path: 'operator', component: OperatorComponent},
+    {path: 'operatortypes', component: OperatortypeComponent}
 ];
 
 @NgModule({
