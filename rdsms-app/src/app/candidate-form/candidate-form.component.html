@@ -1,0 +1,147 @@
+<div class="modal-dialog modal-lg">
+    <!-- The Modal -->
+    <div class="modal fade" id="myCandidateModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header"> <!--this.title_add this.title_update-->
+            <h6 class="modal-title" *ngIf="candidate.candidateId===0">{{ this.title_add }}</h6>
+            <h6 class="modal-title" *ngIf="candidate.candidateId!=0">{{ this.title_update }}</h6>
+            <button type="button" class="close" #closeBtn data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <form>
+          <div class="modal-body">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="candidateName"> Name *</label>
+                <input required [(ngModel)]="candidate.name" name="candidateName" class="form-control">
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="fatherName"> Father's Name *</label>
+                  <input required [(ngModel)]="candidate.fatherName" name="fatherName" class="form-control">
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="motherName"> Mother's Name </label>
+                  <input required [(ngModel)]="candidate.motherName" name="motherName" class="form-control">
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="dob"> DOB </label>
+                    <input required [(ngModel)]="candidate.dob" name="dob" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="address">Address</label>
+                    <textarea required [(ngModel)]="candidate.address" name="address" class="form-control">
+                    </textarea>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="landmark"> Landmark </label>
+                    <input required [(ngModel)]="candidate.landmark" name="landmark" class="form-control">
+                </div>
+            </div>
+            <div class="row">  
+                <div class="form-group col-md-4">
+                    <label for="postalCode">Postal Code</label>
+                    <input required  [(ngModel)]="candidate.postalCode" name="postalCode" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                      <label for="city"> City *</label>
+                      <input required [(ngModel)]="candidate.city" name="city" class="form-control">
+                  </div>
+                <div class="form-group col-md-4">
+                    <label for="district">District</label>
+                    <input required [(ngModel)]="candidate.district" name="district" class="form-control">
+                </div>
+            </div>
+            <div class="row">  
+              <div class="form-group col-md-4">
+                    <label for="state">State</label>
+                    <input required [(ngModel)]="candidate.state" name="state" class="form-control">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="branch">RD Branch</label>
+                <select  [(ngModel)]="candidate.rdbranch" name="rdbranch" class="form-control"> <!--placeholder="Select Director"-->
+                  <option *ngFor="let branch of branches" value="{{branch.branchId}}"
+                  [selected]="candidate.rdbranch.branchId === branch.branchId">
+                    {{branch.branchName}}
+                  </option>
+                </select>
+              </div>    
+              <div class="form-group col-md-4">
+                  <label for="religion">Religion</label>
+                  <input required [(ngModel)]="candidate.religion" name="religion" class="form-control">
+              </div>
+            </div> <!--end row-->
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="category">Category</label>
+                    <input required [(ngModel)]="candidate.category" name="category" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="knownLanguages">Known Languages</label>
+                    <input required [(ngModel)]="candidate.knownLanguages" name="knownLanguages" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="nationality">Nationality</label>
+                    <input required [(ngModel)]="candidate.nationality" name="nationality" class="form-control">
+                </div>
+            </div> 
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="primaryMobile">Primary Mobile</label>
+                    <input required [(ngModel)]="candidate.primaryMobile" name="primaryMobile" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="alternateMobile">Alternate Mobile</label>
+                    <input required [(ngModel)]="candidate.alternateMobile" name="alternateMobile" class="form-control">
+                </div> 
+                <div class="form-group col-md-4">
+                    <label for="accountNumber">Account</label>
+                    <input required [(ngModel)]="candidate.accountNumber" name="accountNumber" class="form-control">
+                </div>
+            </div> 
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="ifscCode">IFSC Code</label>
+                    <input required [(ngModel)]="candidate.ifscCode" name="ifscCode" class="form-control">
+                </div> 
+                <div class="form-group col-md-4">
+                    <label for="bank">Bank Name</label>
+                    <input required [(ngModel)]="candidate.bank" name="bank" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="branch">Bank Branch</label>
+                    <input required [(ngModel)]="candidate.branch" name="branch" class="form-control">
+                </div>  
+            </div> 
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="active">Status</label>
+                    <select  [(ngModel)]="candidate.active" name="active" class="form-control">
+                          <option value="true">Enable</option>
+                          <option value="false">Disable</option>
+                    </select>
+                </div>
+                <!--<div class="form-group col-md-4">
+                    <label for="photo">Photo</label>
+                    <input type="file" [(ngModel)]="fileName" name="fileName" 
+                        (change)="selectFile($event);" class="form-control-file">
+                </div>-->
+            </div>  
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <input type="button" class="btn btn-primary" [hidden]="!candidate.candidateId" (click)="updateCandidate();" value="Save"/>
+            <input type="button" class="btn btn-primary" [hidden]="candidate.candidateId" (click)="addCandidate();" value="Add" />
+            <input type="button" class="btn btn-primary" value="Reset"/>
+          </div> 
+        </form>  
+        </div>
+      </div>
+    </div>
+</div>

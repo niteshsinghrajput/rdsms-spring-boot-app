@@ -14,8 +14,8 @@ export interface IDirector {
     ifscCode: string;
     accountNumber: string;
     createdOn: Date;
-    createdBy: IUser;
+    createdBy: any;
     updatedOn: Date;
-    updatedBy: IUser;
+    updatedBy: any;
     active: boolean;
 }

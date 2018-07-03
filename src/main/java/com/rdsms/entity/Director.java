@@ -3,14 +3,14 @@ package com.rdsms.entity;
  * @author Nitesh
  */
 
-import java.io.Serializable;
+
 
 /**
  * @author Nitesh
  */
 
+import java.io.Serializable;
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Entity
 @Table(name="director")
@@ -40,6 +42,7 @@ public class Director implements Serializable {
 	@Column(name="FatherName")
 	private String fatherName;
 	
+	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="DateOfBirth")
 	private Date dob;
 	
@@ -64,9 +67,11 @@ public class Director implements Serializable {
 	@Column(name="IsActive")
 	private boolean isActive;
 	
+	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="CreatedOn")
 	private Date createdOn;
 	
+	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="UpdatedOn")
 	private Date updatedOn;
 	

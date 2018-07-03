@@ -24,6 +24,11 @@ import { DsrService } from './dsr.service';
 import { BranchFormComponent } from './branch-form/branch-form.component';
 import { DatePipe } from '@angular/common';
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
+import { DirectorFormComponent } from './director-form/director-form.component';
+import { OperatorComponent } from './operator/operator.component';
+import { OperatortypeComponent } from './operatortype/operatortype.component';
+import { OperatorFormComponent } from './operator-form/operator-form.component';
+import { OperatortypeFormComponent } from './operatortype-form/operatortype-form.component';
 
 
 @NgModule({
@@ -40,7 +45,12 @@ import { CandidateFormComponent } from './candidate-form/candidate-form.componen
     DsrBsnlComponent,
     DsrVodafoneComponent,
     BranchFormComponent,
-    CandidateFormComponent
+    CandidateFormComponent,
+    DirectorFormComponent,
+    OperatorComponent,
+    OperatortypeComponent,
+    OperatorFormComponent,
+    OperatortypeFormComponent
   ],
   imports: [
     BrowserModule,

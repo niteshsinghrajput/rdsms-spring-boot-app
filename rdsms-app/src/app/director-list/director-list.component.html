@@ -1,5 +1,23 @@
 <div class="container-fluid">
   <div class="directors-table"> 
+
+      <div style="float:left;">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#directorModal" (click)="onAddNew();">
+          <i class="fa fa-plus" aria-hidden="true"></i></button>
+          <input type="text" id="searchbox" value="Enter Director Name to Search" class="search-box"/>
+          <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
+            {{ this.message }}
+          </div>
+      </div>
+      <div style="float:left;">
+          <app-director-form
+                (directorAdded)='saveDirectorToList($event);' 
+                (directorUpdated)='updateDirectorList($event);'
+                [director]="selectedDirector">
+          </app-director-form>
+      </div>
+
   <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
       <tr class="table-success">
@@ -40,9 +58,11 @@
         <td *ngIf="director.active">Active</td>
         <td *ngIf="!director.active">Disabled</td>
         <td>
-          <button type="button" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-          <button type="button" class="btn btn-default"><i class="fa fa-trash" aria-hidden="true"></i></button>  
-        </td>
+          <button type="button" class="btn btn-default" (click)="onDirectorEdit(director);" data-toggle="modal" data-target="#directorModal">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-default" (click)="deleteDirector(director.directorId);"><i class="fa fa-trash" aria-hidden="true"></i></button>
+      </td>
       </tr>
     </tbody>
   </table>

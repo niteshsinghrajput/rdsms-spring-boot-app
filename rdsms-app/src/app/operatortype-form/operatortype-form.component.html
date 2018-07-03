@@ -1,0 +1,49 @@
+<div class="modal-dialog modal-sm">
+  <!-- The Modal -->
+  <div class="modal fade" id="operatorTypeModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h6 class="modal-title" *ngIf="operatorType.operatorTypeId===0">{{ this.title_add }}</h6>
+          <h6 class="modal-title" *ngIf="operatorType.operatorTypeId!=0">{{ this.title_update }}</h6>
+          <button type="button" class="close" #closeBtn data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <form>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="operatorType">Operator Type</label>
+              <input required [(ngModel)]="operatorType.operatorType" name="operatorType" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="operator">Operator</label>
+              <select  [(ngModel)]="operatorType.operator" name="operator" class="form-control">
+                <option *ngFor="let op of operators" value="{{op.operatorId}}"
+                [selected]="operatorType.operator.operatorId === op.operatorId">
+                  {{op.operatorName}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="active">Status</label>
+              <select  [(ngModel)]="operatorType.active" name="active" class="form-control">
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+              </select>
+            </div>      
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <input type="button" class="btn btn-primary" [hidden]="!operatorType.operatorTypeId" (click)="updateOperatorType();" value="Save"/>
+          <input type="button" class="btn btn-primary" [hidden]="operatorType.operatorTypeId" (click)="addOperatorType();" value="Add" />
+          <input type="button" class="btn btn-primary" value="Reset"/>
+        </div> 
+      </form>  
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,5 +10,6 @@ public interface IDirectorService {
 	Director addDirector(Director director);
 	Director updateDirector(int directorId, Director director);
 	boolean deleteDirector(int directorId);
+	Director getDirectorById(int directorId);
 
 }
