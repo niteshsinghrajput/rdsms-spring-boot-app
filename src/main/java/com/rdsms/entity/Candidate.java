@@ -2,7 +2,6 @@ package com.rdsms.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -91,10 +90,10 @@ public class Candidate implements Serializable {
 	@JoinColumn(name="UpdatedBy")
 	User updatedBy;
 	
-	//@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="BranchId")
 	Branch rdbranch;
+	
 
 	public int getCandidateId() {
 		return candidateId;
@@ -319,28 +318,6 @@ public class Candidate implements Serializable {
 	public void setRdbranch(Branch rdbranch) {
 		this.rdbranch = rdbranch;
 	}
-
-	/*@Override
-	public boolean equals(Object obj) {
-		if(obj == this) 
-			return true;
-		if(!(obj instanceof Candidate)) {
-			return false;
-		}
-		
-		Candidate candidate = (Candidate) obj;
-		return candidate.candidateId == candidateId && candidate.name.equals(name) && candidate.accountNumber.equals(accountNumber)
-				&& candidate.postalCode.equals(postalCode) && candidate.dob.equals(dob);
-	}
-	
-	@Override
-	public int hashCode() {
-		int hash = 121;
-		hash = 21 * hash * candidateId;
-		hash = 21 * hash * name.hashCode();
-		hash = 21 * hash * dob.hashCode();
-		return hash;
-	}*/
 
 	@Override
 	public String toString() {

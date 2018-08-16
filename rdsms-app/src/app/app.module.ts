@@ -29,6 +29,10 @@ import { OperatorComponent } from './operator/operator.component';
 import { OperatortypeComponent } from './operatortype/operatortype.component';
 import { OperatorFormComponent } from './operator-form/operator-form.component';
 import { OperatortypeFormComponent } from './operatortype-form/operatortype-form.component';
+import { IdListComponent } from './id-list/id-list.component';
+import { IdFormComponent } from './id-form/id-form.component';
+import { IssueIdFormComponent } from './issue-id-form/issue-id-form.component';
+import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
 
 
 @NgModule({
@@ -50,7 +54,11 @@ import { OperatortypeFormComponent } from './operatortype-form/operatortype-form
     OperatorComponent,
     OperatortypeComponent,
     OperatorFormComponent,
-    OperatortypeFormComponent
+    OperatortypeFormComponent,
+    IdListComponent,
+    IdFormComponent,
+    IssueIdFormComponent,
+    IssueIdListComponent
   ],
   imports: [
     BrowserModule,

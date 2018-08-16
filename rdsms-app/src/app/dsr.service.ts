@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/observable';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DsrService {

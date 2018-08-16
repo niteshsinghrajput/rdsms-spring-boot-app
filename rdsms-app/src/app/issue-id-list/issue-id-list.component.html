@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="issue-id-table"> 
+
+
+      <table class="table table-striped table-bordered table-hover table-condensed">
+          <thead>
+            <tr class="table-success">
+              <th>Issue ID</th>
+              <th>ID Number</th>
+              <th>Candidate</th>
+              <th>Issued On</th>
+              <th>Issued By</th>
+              <th>Updated On</th>
+              <th>Updated By</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let allocatedId of allocatedIds">
+              <td>{{ allocatedId.issueId }}</td>
+              <td>{{ allocatedId.idd.idNumber }}</td>
+              <td>{{ allocatedId.candidate.name }}</td>
+              <td>{{ allocatedId.createdOn }}</td>
+              <td>{{ allocatedId.createdBy.name }}</td>
+              <td>{{ allocatedId.updatedOn }}</td>
+              <td>{{ allocatedId.updatedBy.name }}</td>
+              <td *ngIf="allocatedId.active">Active</td>
+              <td *ngIf="!allocatedId.active">Disabled</td>
+              <td>
+                <button type="button" class="btn btn-default" (click)="onIDEdit(id);" data-toggle="modal" data-target="#idModal">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default" (click)="deleteID(id.id);">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

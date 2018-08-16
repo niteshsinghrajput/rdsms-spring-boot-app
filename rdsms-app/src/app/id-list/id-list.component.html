@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="id-table"> 
+
+      <div style="float:left;">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#idModal" (click)="addNewID();">
+          <i class="fa fa-plus" aria-hidden="true"></i></button>
+          <input type="text" id="searchbox" value="Enter IssuedID Number to Search" class="search-box"/>
+          <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
+            {{ this.message }}
+          </div>
+      </div>
+
+      <div style="float:left;">
+          <app-id-form
+                (idAdded)='saveIdToList($event);' 
+                (idUpdated)='updateIdList($event);'
+                [id]="selectedId">
+          </app-id-form>
+      </div>
+
+      <table class="table table-striped table-bordered table-hover table-condensed">
+          <thead>
+            <tr class="table-success">
+              <th>ID</th>
+              <th>ID Number</th>
+              <th>Mobile</th>
+              <th>Branch</th>
+              <th>Operator</th>
+              <th>Created By</th>
+              <th>Updated By</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let id of ids">
+              <td>{{ id.id }}</td>
+              <td>{{ id.idNumber }}</td>
+              <td>{{ id.mobile }}</td>
+              <td>{{ id.rdbranch.branchName }}</td>
+              <td>{{ id.operator.operatorName }}</td>
+              <td>{{ id.createdBy.name }}</td>
+              <td>{{ id.updatedBy.name }}</td>
+              <td *ngIf="id.active">Active</td>
+              <td *ngIf="!id.active">Disabled</td>
+              <td>
+                <button type="button" class="btn btn-default" (click)="onIDEdit(id);" data-toggle="modal" data-target="#idModal">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default" (click)="deleteID(id.id);">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

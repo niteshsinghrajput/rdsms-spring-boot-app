@@ -43,4 +43,9 @@ public class IdServiceImpl implements IdService{
 		return dao.deleteId(id);
 	}
 
+	@Override
+	public List<ID> getIdsByBranch(int branchId) {
+		return dao.getIDsByBranch(branchId);
+	}
+
 }
