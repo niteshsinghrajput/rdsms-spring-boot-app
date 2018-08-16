@@ -34,9 +34,6 @@ public class ID {
 	@Column(name="IsActive")
 	private boolean isActive;
 	
-	@Column(name="IsAvailable")
-	private boolean isAvailable;
-	
 	@JsonDeserialize(using = com.rdsms.utils.CustomDateConvertor.class)
 	@Column(name="createdOn")
 	private Date createdOn;
@@ -93,14 +90,6 @@ public class ID {
 		this.isActive = isActive;
 	}
 
-	public boolean isAvailable() {
-		return isAvailable;
-	}
-
-	public void setAvailable(boolean isAvailable) {
-		this.isAvailable = isAvailable;
-	}
-
 	public Date getCreatedOn() {
 		return createdOn;
 	}
@@ -151,8 +140,7 @@ public class ID {
 
 	@Override
 	public String toString() {
-		return "ID [id=" + id + ", idNumber=" + idNumber + ", mobile=" + mobile + ", isActive=" + isActive
-				+ ", isAvailable=" + isAvailable + "]";
+		return "ID [id=" + id + ", idNumber=" + idNumber + ", mobile=" + mobile + ", isActive=" + isActive + "]";
 	}
 
 }

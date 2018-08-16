@@ -10,6 +10,8 @@ import { DsrBsnlComponent } from './dsr-bsnl/dsr-bsnl.component';
 import { DsrVodafoneComponent } from './dsr-vodafone/dsr-vodafone.component';
 import { OperatorComponent } from './operator/operator.component';
 import { OperatortypeComponent } from './operatortype/operatortype.component';
+import { IdListComponent } from './id-list/id-list.component';
+import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
 
 const routes: Routes = [
     {path: '', redirectTo: 'users' , pathMatch: 'full'},
@@ -19,6 +21,8 @@ const routes: Routes = [
     {path: 'candidates', component: CandidateListComponent},
     {path: 'directors', component: DirectorListComponent},
     {path: 'mis', component: MisDataListComponent},
+    {path: 'ids', component: IdListComponent},
+    {path: 'issue-ids', component: IssueIdListComponent},
     {path: 'dsrBsnl', component: DsrBsnlComponent},
     {path: 'dsrVodafone', component: DsrVodafoneComponent},
     {path: 'operator', component: OperatorComponent},
@@ -33,4 +37,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents = [RolesComponent, UserListComponent,
     BranchListComponent, CandidateListComponent, DirectorListComponent,
-     MisDataListComponent, DsrBsnlComponent, DsrVodafoneComponent];
+     MisDataListComponent, DsrBsnlComponent, DsrVodafoneComponent, IssueIdListComponent];

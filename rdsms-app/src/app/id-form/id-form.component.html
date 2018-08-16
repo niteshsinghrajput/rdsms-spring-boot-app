@@ -1,0 +1,62 @@
+<div class="modal-dialog modal-sm">
+  <!-- The Modal -->
+  <div class="modal fade" id="idModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h6 class="modal-title" *ngIf="id.id===0">{{ this.title_add }} : {{id.id}}</h6>
+          <h6 class="modal-title" *ngIf="id.id!=0">{{ this.title_update }} : {{id.id}}</h6>
+          <button type="button" class="close" #closeBtn data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <form>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="idNumber">ID Number</label>
+              <input required [(ngModel)]="id.idNumber" name="idNumber" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobile</label>
+              <input required [(ngModel)]="id.mobile" name="mobile" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="operator">Operator</label>
+              <select  [(ngModel)]="id.operator" name="operator" class="form-control">
+                <option *ngFor="let op of operators" value="{{op.operatorId}}"
+                [selected]="id.operator.operatorId === op.operatorId">
+                  {{op.operatorName}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="branch">RD Branch</label>
+              <select  [(ngModel)]="id.rdbranch" name="rdbranch" class="form-control"> <!--placeholder="Select Director"-->
+                <option *ngFor="let branch of branches" value="{{branch.branchId}}"
+                [selected]="id.rdbranch.branchId === branch.branchId">
+                  {{branch.branchName}}
+                </option>
+              </select>
+            </div>    
+            <div class="form-group">
+              <label for="active">Status</label>
+              <select  [(ngModel)]="id.active" name="active" class="form-control">
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+              </select>
+            </div>      
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <input type="button" class="btn btn-primary" [hidden]="!id.id" (click)="updateID();" value="Save"/>
+          <input type="button" class="btn btn-primary" [hidden]="id.id" (click)="addID();" value="Add" />
+          <input type="button" class="btn btn-primary" value="Reset"/>
+        </div> 
+      </form>  
+      </div>
+    </div>
+  </div>
+</div>

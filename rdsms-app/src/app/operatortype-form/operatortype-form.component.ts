@@ -49,7 +49,7 @@ export class OperatortypeFormComponent implements OnInit {
     console.log(JSON.stringify(this.operatorType));
 
     const operatorTypeData = JSON.parse(JSON.stringify(this.operatorType));
-    operatorTypeData.operator = {'operatorId': 3};
+    operatorTypeData.operator = {'operatorId': this.selectedOperator.operatorId};
     this.service.createOperatorType(operatorTypeData)
     .subscribe(successCode => {
       if (successCode === 200) {

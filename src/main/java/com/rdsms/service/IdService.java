@@ -8,6 +8,7 @@ public interface IdService {
 	
 	List<ID> getIds();
 	ID getId(int id);
+	List<ID> getIdsByBranch(int branchId);
 	ID createId(ID id);
 	ID updateId(int id, ID idData);
 	boolean deleteId(int id);
