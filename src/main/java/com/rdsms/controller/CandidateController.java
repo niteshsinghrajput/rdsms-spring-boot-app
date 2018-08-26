@@ -36,6 +36,12 @@ public class CandidateController {
 		return new ResponseEntity<List<Candidate>>(candidates,HttpStatus.OK);
 	}
 	
+	@GetMapping("availablecandidates")
+	public ResponseEntity<List<Candidate>> getAvailableCandidates() {
+		List<Candidate> candidates = service.getAvailableCandidates();
+		return new ResponseEntity<List<Candidate>>(candidates,HttpStatus.OK);
+	}
+	
 	@GetMapping("candidates/{candidateId}")
 	public ResponseEntity<Candidate> getCandidateById(@PathVariable("candidateId") int candidateId) {
 		Candidate candidate = service.getCandidateById(candidateId);

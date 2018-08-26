@@ -26,14 +26,23 @@ export class IssueIdService {
           .catch(this.handleError);
   }
 
-  updateAllocatedId() {
+  updateAllocatedId(id: IdAllocation) {
     console.log('updateAllocatedId called...');
+    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: cpHeaders });
+    return this.http.put(this.endpoint + 'allocatedid/' + id.issueId, id, options)
+            .map(success => success.status)
+            .catch(this.handleError);
   }
 
-  deallocateId() {
-    console.log('DeallocateId called..');
+  deleteID(id): Observable<number> {
+    console.log('Deleting Allocated [id = ' + id + '] from backend');
+    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: cpHeaders });
+    return this.http.delete(this.endpoint + 'deallocateid' + '/' + id)
+          .map(success => success.status)
+          .catch(this.handleError);
   }
-
   private extractData(res: Response) {
     const body = res.json();
     return body;

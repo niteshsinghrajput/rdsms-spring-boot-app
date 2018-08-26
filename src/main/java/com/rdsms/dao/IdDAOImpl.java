@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.rdsms.entity.Branch;
 import com.rdsms.entity.ID;
+import com.rdsms.entity.IdAllocation;
 import com.rdsms.entity.Operator;
 import com.rdsms.entity.User;
 
@@ -118,14 +119,34 @@ public class IdDAOImpl implements IdDAO {
 
 	@Override
 	public List<ID> getAvailableIDsByBranch(int branchId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ID> getIDsByOperator(int operatorId) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ID> getAvailableIds() {
+		String hql = "FROM com.rdsms.entity.ID as i order by i.id DESC";
+		List<ID> idList = manager.createQuery(hql).getResultList();
+		List<ID> availableIds = new ArrayList<ID>();
+		for(ID id: idList) {
+			String sql = "SELECT * FROM id_allocation WHERE id= :id";
+			Query query  = manager.createNativeQuery(sql);
+			query.setParameter("id", id.getId());
+			
+			System.out.println(query);
+			List<Object[]> rows = query.getResultList();
+			if(rows.size() >=2) {
+				continue;
+			}else {
+				availableIds.add(id);
+			}
+		}
+		return availableIds;
 	}
 
 }

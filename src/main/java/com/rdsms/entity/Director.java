@@ -213,12 +213,9 @@ public class Director implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Director [directorId=" + directorId + ", directorName=" + directorName + ", photoId=" + photoId
-				+ ", fatherName=" + fatherName + ", dob=" + dob + ", primaryMobile=" + primaryMobile
-				+ ", alternateMobile=" + alternateMobile + ", bankName=" + bankName + ", branchName=" + branchName
-				+ ", ifscCode=" + ifscCode + ", accountNumber=" + accountNumber + ", isActive=" + isActive
-				+ ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + ", createdBy=" + createdBy + ", updatedBy="
-				+ updatedBy + "]";
+		return "Director [directorId=" + directorId + ", directorName=" + directorName + ", fatherName=" + fatherName
+				+ ", dob=" + dob + ", primaryMobile=" + primaryMobile + ", alternateMobile=" + alternateMobile
+				+ ", isActive=" + isActive + "]";
 	}
 	
 	

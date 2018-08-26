@@ -34,8 +34,7 @@ public class IdAllocationService implements IIdAllocationService {
 
 	@Override
 	public IdAllocation updateId(int id, IdAllocation idData) {
-		// TODO Auto-generated method stub
-		return null;
+		return idDAO.updateId(id, idData);
 	}
 
 	@Override

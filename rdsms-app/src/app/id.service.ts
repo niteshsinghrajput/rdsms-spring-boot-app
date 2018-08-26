@@ -26,6 +26,13 @@ export class IdService {
           .catch(this.handleError);
   }
 
+  getAvailableIDs() {
+    console.log('Getting Available IDs from backend..!!');
+    return this.http.get('http://localhost:8080/idservice/availableid')
+          .map(this.extractData)
+          .catch(this.handleError);
+  }
+
   updateID(id: ID): Observable<number> {
     console.log('updating ID in backend..' + id);
     const cpHeaders = new Headers({ 'Content-Type': 'application/json' });

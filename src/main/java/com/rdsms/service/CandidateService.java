@@ -39,4 +39,9 @@ public class CandidateService implements ICandidateService{
 		return dao.deleteCandidate(candidateId);
 	}
 
+	@Override
+	public List<Candidate> getAvailableCandidates() {
+		return dao.getAvailableCandidates();
+	}
+
 }

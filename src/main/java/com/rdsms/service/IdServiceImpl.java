@@ -48,4 +48,9 @@ public class IdServiceImpl implements IdService{
 		return dao.getIDsByBranch(branchId);
 	}
 
+	@Override
+	public List<ID> getAvailableIds() {
+		return dao.getAvailableIds();
+	}
+
 }
