@@ -12,6 +12,7 @@ import com.rdsms.entity.Candidate;
 public interface ICandidateDAO {
 	
 	List<Candidate> getCandidates();
+	List<Candidate> getAvailableCandidates();
 	Candidate getCandidateById(int candidateId);
 	Candidate createCandidate(Candidate candidate);
 	Candidate updateCandidate(int candidateId, Candidate candidate);

@@ -41,10 +41,12 @@ public class IssueIdDAO implements IIssueIdDAO {
 		User createdBy = manager.find(User.class, id.getCreatedBy().getUserId());
 		User updatedBy = manager.find(User.class, id.getUpdatedBy().getUserId());
 		Candidate candidate = manager.find(Candidate.class, id.getCandidate().getCandidateId());
+		
 		id.setIdd(idData);
 		id.setCandidate(candidate);
 		id.setCreatedBy(createdBy);
 		id.setUpdatedBy(updatedBy);
+		
 		manager.persist(id);
 		
 		IdAllocation allocatedId = getLastInsertedId();
@@ -69,7 +71,7 @@ public class IssueIdDAO implements IIssueIdDAO {
 		allocatedId.setIdd(existingIdData);
 		
 		manager.flush();
-		IdAllocation updatedAllocationId = getAllocatedId(id);
+		IdAllocation updatedAllocationId = manager.find(IdAllocation.class, id);
 		return updatedAllocationId;
 	}
 
@@ -109,5 +111,5 @@ public class IssueIdDAO implements IIssueIdDAO {
 		}
 		return allocatedIds;
 	}
-
+	
 }

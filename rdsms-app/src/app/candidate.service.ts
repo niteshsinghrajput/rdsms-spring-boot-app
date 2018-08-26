@@ -19,6 +19,13 @@ export class CandidateService {
 
   }
 
+  getAvailableCandidates() {
+    console.log('Getting candidates from backend...!!');
+    return this.http.get('http://localhost:8080/candidateservice/availablecandidates')
+          .map(this.extractData)
+          .catch(this.handleError);
+  }
+
   getCandidates() {
       console.log('Getting candidates from backend...!!');
       return this.http.get(this.endpoint)

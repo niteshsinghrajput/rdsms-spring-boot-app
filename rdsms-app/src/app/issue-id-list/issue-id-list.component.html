@@ -1,6 +1,23 @@
 <div class="container-fluid">
   <div class="issue-id-table"> 
 
+    <div style="float:left;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#issueIdModal" (click)="addNewID();">
+        <i class="fa fa-plus" aria-hidden="true"></i></button>
+        <input type="text" id="searchbox" value="Enter IssuedID Number to Search" class="search-box"/>
+        <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
+          {{ this.message }}
+        </div>
+    </div>
+
+    <div style="float:left;">
+      <app-issue-id-form
+            (idAdded)='saveIdToList($event);' 
+            (idUpdated)='updateIdList($event);'
+            [allocatedId]="selectedId">
+      </app-issue-id-form>
+    </div>
 
       <table class="table table-striped table-bordered table-hover table-condensed">
           <thead>
@@ -28,10 +45,10 @@
               <td *ngIf="allocatedId.active">Active</td>
               <td *ngIf="!allocatedId.active">Disabled</td>
               <td>
-                <button type="button" class="btn btn-default" (click)="onIDEdit(id);" data-toggle="modal" data-target="#idModal">
+                <button type="button" class="btn btn-default" (click)="onIDEdit(allocatedId);" data-toggle="modal" data-target="#issueIdModal">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
-                <button type="button" class="btn btn-default" (click)="deleteID(id.id);">
+                <button type="button" class="btn btn-default" (click)="deleteID(allocatedId.issueId);">
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
             </td>

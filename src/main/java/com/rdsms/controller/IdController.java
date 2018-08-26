@@ -41,6 +41,12 @@ public class IdController {
 		return new ResponseEntity<List<ID>>(ids, HttpStatus.OK);
 	}
 	
+	@GetMapping("availableid")
+	public ResponseEntity<List<ID>> getAvailableIds(){
+		List<ID> ids = service.getAvailableIds();
+		return new ResponseEntity<List<ID>>(ids, HttpStatus.OK);
+	}
+	
 	@GetMapping("idbybranch/{branchId}")
 	public ResponseEntity<List<ID>> getIdsByBranch(@PathVariable("branchId") int branchId){
 		List<ID> ids = service.getIdsByBranch(branchId);
@@ -51,7 +57,6 @@ public class IdController {
 	public ResponseEntity<ID> getIDData(@PathVariable("id") int id){
 		ID idData = service.getId(id);
 		return new ResponseEntity<ID>(idData,HttpStatus.OK);
-		
 	}
 	
 	@PostMapping("id")
@@ -100,6 +105,12 @@ public class IdController {
 	public ResponseEntity<IdAllocation> allocateId(@RequestBody IdAllocation idAllocation) {
 		IdAllocation id = allocationService.allocateId(idAllocation);
 		return new ResponseEntity<IdAllocation>(id,HttpStatus.OK);
+	}
+	
+	@PutMapping("allocatedid/{issuedId}")
+	public ResponseEntity<IdAllocation> updateAllocatedId(@PathVariable("issuedId") int issuedId, @RequestBody IdAllocation idAllocation){
+		IdAllocation updatedAllocatedId = allocationService.updateId(issuedId, idAllocation);
+		return new ResponseEntity<IdAllocation>(updatedAllocatedId,HttpStatus.OK);
 	}
 	
 	@DeleteMapping("deallocateid/{issuedId}")

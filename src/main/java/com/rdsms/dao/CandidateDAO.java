@@ -1,5 +1,6 @@
 package com.rdsms.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -109,6 +110,29 @@ public class CandidateDAO implements ICandidateDAO{
 		query.setMaxResults(1);
 		Candidate candidate = (Candidate)query.getSingleResult();
 		return candidate;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Candidate> getAvailableCandidates() {
+		
+		String hql = "FROM com.rdsms.entity.Candidate as c ORDER BY c.candidateId";
+		List<Candidate> candidates = entityManager.createQuery(hql).getResultList();
+		
+		List<Candidate> availableCandidates = new ArrayList<>();
+		for(Candidate c: candidates) {
+			String sql = "SELECT * FROM id_allocation as id WHERE CandidateId = :candidateId ORDER BY id.issueId";
+			Query query  = entityManager.createNativeQuery(sql);
+			query.setParameter("candidateId", c.getCandidateId());
+			List<Object> rows = query.getResultList();
+			if(rows.size() >=2) {
+				continue;
+			}else {
+				availableCandidates.add(c);
+			}
+			}
+		
+		return availableCandidates;
 	}
 
 }

@@ -159,8 +159,10 @@ public class Branch implements Serializable {
 	@Override
 	public String toString() {
 		return "Branch [branchId=" + branchId + ", branchName=" + branchName + ", address=" + address + ", city=" + city
-				+ ", district=" + district + ", isActive=" + isActive + ", createdOn=" + createdOn + ", updatedOn="
-				+ updatedOn + ", director=" + director + ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + "]";
+				+ ", district=" + district + ", isActive=" + isActive + "]";
 	}
+
+	
+	
 	
 }

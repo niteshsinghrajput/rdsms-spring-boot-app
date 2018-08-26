@@ -322,14 +322,8 @@ public class Candidate implements Serializable {
 	@Override
 	public String toString() {
 		return "Candidate [candidateId=" + candidateId + ", name=" + name + ", fatherName=" + fatherName
-				+ ", motherName=" + motherName + ", dob=" + dob + ", address=" + address + ", landmark=" + landmark
-				+ ", city=" + city + ", district=" + district + ", state=" + state + ", postalCode=" + postalCode
-				+ ", religion=" + religion + ", category=" + category + ", nationality=" + nationality
-				+ ", knownLanguages=" + knownLanguages + ", primaryMobile=" + primaryMobile + ", alternateMobile="
-				+ alternateMobile + ", photoId=" + photoId + ", bank=" + bank + ", branch=" + branch + ", ifscCode="
-				+ ifscCode + ", accountNumber=" + accountNumber + ", isActive=" + isActive + ", createdOn=" + createdOn
-				+ ", updatedOn=" + updatedOn + ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + ", rdbranch="
-				+ rdbranch + "]";
+				+ ", motherName=" + motherName + ", dob=" + dob + ", address=" + address + ", city=" + city + "]";
 	}
+	
 
 }

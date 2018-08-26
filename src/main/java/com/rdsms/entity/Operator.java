@@ -141,8 +141,8 @@ public class Operator implements Serializable{
 	@Override
 	public String toString() {
 		return "Operator [operatorId=" + operatorId + ", operatorName=" + operatorName + ", description=" + description
-				+ ", isActive=" + isActive + ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + ", createdOn="
-				+ createdOn + ", updatedOn=" + updatedOn + ", operatorType=" + operatorType + "]";
+				+ ", isActive=" + isActive + "]";
 	}
+	
 	
 }

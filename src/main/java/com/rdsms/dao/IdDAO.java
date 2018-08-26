@@ -13,6 +13,7 @@ public interface IdDAO {
 	List<ID> getIDsByBranch(int branchId);
 	List<ID> getAvailableIDsByBranch(int branchId);
 	List<ID> getIDsByOperator(int operatorId);
+	List<ID> getAvailableIds();
 	
 	ID getID(int id);
 	ID createId(ID id);

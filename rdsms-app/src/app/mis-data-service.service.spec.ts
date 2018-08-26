@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MisDataServiceService } from './mis-data-service.service';
+import { MisDataService } from './mis-data.service';
 
 describe('MisDataServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MisDataServiceService]
+      providers: [MisDataService]
     });
   });
 
-  it('should be created', inject([MisDataServiceService], (service: MisDataServiceService) => {
+  it('should be created', inject([MisDataService], (service: MisDataService) => {
     expect(service).toBeTruthy();
   }));
 });

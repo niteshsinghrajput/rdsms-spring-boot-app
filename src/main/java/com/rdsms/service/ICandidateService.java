@@ -7,6 +7,7 @@ import com.rdsms.entity.Candidate;
 public interface ICandidateService {
 	
 	List<Candidate> getCandidates();
+	List<Candidate> getAvailableCandidates();
 	Candidate createCandidate(Candidate candidate);
 	Candidate getCandidateById(int candidateId);
 	Candidate updateCandidate(int candidateId,Candidate candidate);
