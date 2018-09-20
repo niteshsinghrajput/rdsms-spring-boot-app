@@ -48,13 +48,13 @@ public class RdsmsController {
 	}
 	
 	@PutMapping("roles/{roleId}")
-	public ResponseEntity<Role> updateRole(@PathVariable("roleId") int roleId,@RequestBody Role role){
+	public ResponseEntity<Role> updateRole(@PathVariable("roleId") Long roleId,@RequestBody Role role){
 		Role updatedRole = service.updateRole(roleId, role);
 		return new ResponseEntity<Role>(updatedRole,HttpStatus.OK);
 	}
 	
 	@DeleteMapping("roles/{roleId}")
-	public ResponseEntity<String> deleteRole(@PathVariable("roleId") int roleId) {
+	public ResponseEntity<String> deleteRole(@PathVariable("roleId") Long roleId) {
 		boolean isDeleted = service.deleteRole(roleId);
 		String message;
 		if(isDeleted) {
@@ -67,7 +67,7 @@ public class RdsmsController {
 	}
 	
 	@GetMapping("roles/{roleId}")
-	public ResponseEntity<Role> getRoleByRoleId(@PathVariable("roleId") int roleId){
+	public ResponseEntity<Role> getRoleByRoleId(@PathVariable("roleId") Long roleId){
 		Role role = service.getRoleByRoleId(roleId);
 		return new ResponseEntity<Role>(role,HttpStatus.OK);
 	}
@@ -80,7 +80,7 @@ public class RdsmsController {
 	}
 	
 	@GetMapping("users/{userId}")
-	public ResponseEntity<User> getUserByUserId(@PathVariable("userId") int userId){
+	public ResponseEntity<User> getUserByUserId(@PathVariable("userId") Long userId){
 		User user = service.getUserByUserId(userId);
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
@@ -92,14 +92,14 @@ public class RdsmsController {
 	}
 	
 	@PutMapping("users/{userId}")
-	public ResponseEntity<User> updateUser(@PathVariable("userId") int userId, @RequestBody User user){
+	public ResponseEntity<User> updateUser(@PathVariable("userId") Long userId, @RequestBody User user){
 		User updatedUser = service.updateUser(userId, user);
 		return new ResponseEntity<User>(updatedUser,HttpStatus.OK);
 		
 	}
 	
 	@DeleteMapping("users/{userId}")
-	public ResponseEntity<String> deleteUser(@PathVariable("userId") int userId){
+	public ResponseEntity<String> deleteUser(@PathVariable("userId") Long userId){
 		String message;
 		boolean status = service.deleteUser(userId);
 		if(status) {

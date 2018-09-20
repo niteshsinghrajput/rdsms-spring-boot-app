@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RolesService } from '../roles.service';
 import { IRole } from '../role';
 import { RoleFormComponent } from '../role-form/role-form.component';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-roles',
@@ -68,7 +70,7 @@ export class RolesComponent implements OnInit {
     }, 3000);
   }
 
-  constructor(private roleService: RolesService) { }
+  constructor(private roleService: RolesService, public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
     console.log('getting all roles from backend ...');

@@ -12,10 +12,12 @@ import { OperatorComponent } from './operator/operator.component';
 import { OperatortypeComponent } from './operatortype/operatortype.component';
 import { IdListComponent } from './id-list/id-list.component';
 import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
+import { LoginComponent } from './login/login.component';
+import { UrlPermission } from './url.permission';
 
 const routes: Routes = [
     {path: '', redirectTo: 'users' , pathMatch: 'full'},
-    {path: 'roles', component: RolesComponent},
+    {path: 'roles', component: RolesComponent, canActivate: [UrlPermission]},
     {path: 'users', component: UserListComponent },
     {path: 'branches', component: BranchListComponent},
     {path: 'candidates', component: CandidateListComponent},
@@ -26,7 +28,9 @@ const routes: Routes = [
     {path: 'dsrBsnl', component: DsrBsnlComponent},
     {path: 'dsrVodafone', component: DsrVodafoneComponent},
     {path: 'operator', component: OperatorComponent},
-    {path: 'operatortypes', component: OperatortypeComponent}
+    {path: 'operatortypes', component: OperatortypeComponent},
+    {path: 'login', component: LoginComponent },
+    {path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

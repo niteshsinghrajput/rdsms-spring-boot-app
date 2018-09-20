@@ -31,17 +31,17 @@ public class RdsmsService implements IRdsmsService {
 	}
 	
 	@Override
-	public Role updateRole(int roleId, Role role) {
+	public Role updateRole(Long roleId, Role role) {
 		return dao.updateRole(roleId, role);
 	}
 	
 	@Override
-	public boolean deleteRole(int roleId) {
+	public boolean deleteRole(Long roleId) {
 		return dao.deleteRole(roleId);
 	}
 	
 	@Override
-	public Role getRoleByRoleId(int roleId) {
+	public Role getRoleByRoleId(Long roleId) {
 		return dao.getRoleByRoleId(roleId);
 	}
 	
@@ -58,17 +58,17 @@ public class RdsmsService implements IRdsmsService {
 	}
 
 	@Override
-	public User updateUser(int userId, User user) {
+	public User updateUser(Long userId, User user) {
 		return dao.updateUser(userId, user);
 	}
 
 	@Override
-	public boolean deleteUser(int userId) {
+	public boolean deleteUser(Long userId) {
 		return dao.deleteUser(userId);
 	}
 	
 	@Override
-	public User getUserByUserId(int userId) {
+	public User getUserByUserId(Long userId) {
 		return dao.getUserByUserId(userId);
 	}
 	

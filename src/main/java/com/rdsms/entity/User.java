@@ -34,7 +34,7 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="UserId")
-	private int userId;
+	private Long userId;
 	
 	@Column(name="Name")
 	private String name;
@@ -83,12 +83,31 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "createdBy" , cascade = CascadeType.ALL)
 	private Set<Operator> operators;
 	
+	public User() {
+	}
 	
-	public int getUserId() {
+	public User(String name, String email, String userName, String password, String mobile, String address, String city,
+			String district, String postalCode, boolean isActive) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+		this.mobile = mobile;
+		this.address = address;
+		this.city = city;
+		this.district = district;
+		this.postalCode = postalCode;
+		this.isActive = isActive;
+	}
+
+
+
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -221,7 +240,6 @@ public class User implements Serializable {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
-		result = prime * result + userId;
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}

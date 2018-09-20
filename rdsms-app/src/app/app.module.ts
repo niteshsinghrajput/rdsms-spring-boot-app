@@ -33,6 +33,7 @@ import { IdListComponent } from './id-list/id-list.component';
 import { IdFormComponent } from './id-form/id-form.component';
 import { IssueIdFormComponent } from './issue-id-form/issue-id-form.component';
 import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
     IdListComponent,
     IdFormComponent,
     IssueIdFormComponent,
-    IssueIdListComponent
+    IssueIdListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -72,3 +74,4 @@ import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
