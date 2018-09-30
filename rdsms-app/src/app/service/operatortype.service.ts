@@ -3,7 +3,9 @@ import { Observable } from 'rxjs/observable';
 import {Http, Headers, RequestOptions, RequestMethod, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { IOperatorType } from './operatortype';
+import { IOperatorType } from '../models/operatortype';
+import { AppComponent } from '../app.component';
+import { AuthService } from './auth.service';
 
 /**
  * @author Nitesh
@@ -12,21 +14,20 @@ import { IOperatorType } from './operatortype';
 @Injectable()
 export class OperatortypeService {
 
-  constructor(private http: Http) { }
-  private endpoint = 'http://localhost:8080/operatorservice/operatortypes';
+  constructor(private http: Http, private service: AuthService) { }
+  private endpoint = AppComponent.API_URL + '/operatorservice/operatortypes';
+  private options = this.service.getAuthHeaders();
 
   getOperatorTypeList(): Observable<IOperatorType[]> {
     console.log(this.endpoint);
-    return this.http.get(this.endpoint)
+    return this.http.get(this.endpoint, this.options)
           .map(this.extractData)
           .catch(this.handleError);
   }
 
   createOperatorType(operatorType) {
     console.log('Adding new operatorType into backend database..' + operatorType);
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json'});
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.post(this.endpoint, operatorType, options)
+    return this.http.post(this.endpoint, operatorType, this.options)
     .map(success => success.status)
     .catch(this.handleError);
 
@@ -34,18 +35,14 @@ export class OperatortypeService {
 
   updateOperatorType(operatorType: IOperatorType): Observable<number> {
     console.log('updating operatorType in backend..' + JSON.stringify(operatorType));
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.put(this.endpoint + '/' + operatorType.operatorTypeId, operatorType, options)
+    return this.http.put(this.endpoint + '/' + operatorType.operatorTypeId, operatorType, this.options)
             .map(success => success.status)
             .catch(this.handleError);
   }
 
   deleteOperatorType(operatorTypeId): Observable<number> {
     console.log('Deleting operatorType [id = ' + operatorTypeId + '] from backend');
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.delete(this.endpoint + '/' + operatorTypeId)
+    return this.http.delete(this.endpoint + '/' + operatorTypeId, this.options)
           .map(success => success.status)
           .catch(this.handleError);
   }

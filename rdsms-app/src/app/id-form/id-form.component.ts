@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ID } from '../id';
-import { IOperator } from '../operator';
-import { IBranch } from '../branch';
-import { OperatorService } from '../operator.service';
-import { BranchService } from '../branch.service';
-import { IdService } from '../id.service';
+import { ID } from '../models/id';
+import { IOperator } from '../models/operator';
+import { IBranch } from '../models/branch';
+import { OperatorService } from '../service/operator.service';
+import { BranchService } from '../service/branch.service';
+import { IdService } from '../service/id.service';
 
 
 @Component({

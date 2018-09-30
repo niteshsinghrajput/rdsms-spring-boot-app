@@ -2,27 +2,28 @@ import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/observable';
 import { HttpClient } from '@angular/common/http';
-import { IDirector } from './director';
-
+import { IDirector } from '../models/director';
+import { AuthService } from '../service/auth.service';
+import { AppComponent } from '../app.component';
 
 @Injectable()
 export class DirectorService {
 
-  constructor(private http: Http) { }
-  private endpoint = 'http://localhost:8080/directorservice/directors';
+  constructor(private http: Http, private service: AuthService) { }
+
+  private endpoint = AppComponent.API_URL + '/directorservice/directors';
+  private options = this.service.getAuthHeaders();
 
   getDirectors() {
     console.log('Getting list of directors from backend service...');
-    return this.http.get(this.endpoint)
+    return this.http.get(this.endpoint, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   createDirector(director) {
     console.log('Adding new Director into backend database..' + director);
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json'});
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.post(this.endpoint, director, options)
+    return this.http.post(this.endpoint, director, this.options)
     .map(success => success.status)
     .catch(this.handleError);
 
@@ -30,18 +31,14 @@ export class DirectorService {
 
   updateDirector(director: IDirector): Observable<number> {
     console.log('updating director in backend..' + director);
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.put(this.endpoint + '/' + director.directorId, director, options)
+    return this.http.put(this.endpoint + '/' + director.directorId, director, this.options)
             .map(success => success.status)
             .catch(this.handleError);
   }
 
   deleteDirector(directorId): Observable<number> {
     console.log('Deleting director [id = ' + directorId + '] from backend');
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.delete(this.endpoint + '/' + directorId)
+    return this.http.delete(this.endpoint + '/' + directorId, this.options)
           .map(success => success.status)
           .catch(this.handleError);
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../models/model.user';
 
@@ -22,9 +22,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.logIn(this.user)
+    this.authService.userLogin(this.user)
       .subscribe(data => {
-        this.router.navigate(['/user']);
+        this.router.navigate(['/users']);
         }, err => {
         this.errorMessage = 'error :  Username or password is incorrect';
         }

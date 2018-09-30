@@ -7,8 +7,8 @@ export class UrlPermission implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (localStorage.getItem('currentUser')) {
-      // logged in so return true
+    const username  =  JSON.parse(localStorage.getItem('currentUser'));
+    if (username != null) {
       return true;
     }
 

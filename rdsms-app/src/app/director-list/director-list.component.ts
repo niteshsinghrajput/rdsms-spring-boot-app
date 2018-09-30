@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IDirector } from '../director';
-import { DirectorService } from '../director.service';
+import { IDirector } from '../models/director';
+import { DirectorService } from '../service/director.service';
 
 @Component({
   selector: 'app-director-list',
@@ -11,7 +11,7 @@ import { DirectorService } from '../director.service';
 export class DirectorListComponent implements OnInit {
 
   directors: IDirector[];
-  selectedDirector: IDirector;
+  selectedDirector: IDirector | any;
   public message: string;
   public displayMessage = false;
 
@@ -19,12 +19,13 @@ export class DirectorListComponent implements OnInit {
 
   onAddNew() {
     this.selectedDirector = {
-      'directorId': 0, 'directorName': 'Enter Director Name', 'photoId': 0, 'fatherName': 'Enter Father Name',
+      'directorId': 0
+      /* 'directorId': 0, 'directorName': 'Enter Director Name', 'photoId': 0, 'fatherName': 'Enter Father Name',
       'dob': new Date(), 'primaryMobile': 'Enter Primary Mobile',  'alternateMobile': 'Enter Alternate Mobile',
       'bankName': 'Enter Bank Name',  'branchName': 'Enter Branch Name', 'ifscCode': 'Enter IFSC Code',
       'accountNumber': 'Enter Account Number',  'createdOn': new Date(),  'updatedOn': new Date(),
       'createdBy': { 'userId': 0 }, 'updatedBy': { 'userId': 0 },
-      'active': true
+      'active': true */
   };
   }
 

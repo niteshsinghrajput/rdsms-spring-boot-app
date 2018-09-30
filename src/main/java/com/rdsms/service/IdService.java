@@ -3,6 +3,7 @@ package com.rdsms.service;
 import java.util.List;
 
 import com.rdsms.entity.ID;
+import com.rdsms.entity.User;
 
 public interface IdService {
 	
@@ -13,5 +14,6 @@ public interface IdService {
 	ID createId(ID id);
 	ID updateId(int id, ID idData);
 	boolean deleteId(int id);
+	
 
 }

@@ -70,5 +70,10 @@ public class Role {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+	@Override
+	public String toString() {
+		return "Role [roleId=" + roleId + ", roleName=" + roleName + ", description=" + description + ", isActive="
+				+ isActive + "]";
+	}
     
 }

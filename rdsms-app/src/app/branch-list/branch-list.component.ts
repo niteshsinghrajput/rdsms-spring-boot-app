@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BranchService } from '../branch.service';
-import { IBranch } from '../branch';
+import { BranchService } from '../service/branch.service';
+import { IBranch } from '../models/branch';
 
 @Component({
   selector: 'app-branch-list',
@@ -49,6 +49,7 @@ export class BranchListComponent implements OnInit {
     console.log('deleteBranch called for Branch Id - ' + branchId);
     this.branchService.deleteBranchById(branchId)
     .subscribe(successCode => {
+      console.log('Hiii', successCode);
       if (successCode === 200) {
         const msg = 'Branch [BranchId=' + branchId + '] has been deleted successfully..!!!';
         console.log(msg);

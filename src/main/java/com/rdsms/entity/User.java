@@ -222,6 +222,8 @@ public class User implements Serializable {
 	public void setOperators(Set<Operator> operators) {
 		this.operators = operators;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {
@@ -330,7 +332,7 @@ public class User implements Serializable {
 		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", userName=" + userName
 				+ ", password=" + password + ", mobile=" + mobile + ", address=" + address + ", city=" + city
 				+ ", district=" + district + ", postalCode=" + postalCode + ", isActive=" + isActive + ", roles="
-				+ roles + ", candidates=" + candidates + ", branches=" + branches + ", operators=" + operators + "]";
+				+ roles + "]";
 	}
 
 	

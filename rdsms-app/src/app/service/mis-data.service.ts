@@ -3,19 +3,21 @@ import {Http, Headers, RequestOptions, RequestMethod, Response } from '@angular/
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { IMis } from './mis';
+import { IMis } from '../models/mis';
+import { AppComponent } from '../app.component';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class MisDataService {
 
-  constructor(private http: Http) { }
-  private endpoint = 'http://localhost:8080/misservice/mis';
-
+  constructor(private http: Http, private service: AuthService) { }
+  private endpoint = AppComponent.API_URL + '/misservice/mis';
+  private options = this.service.getAuthHeaders();
   // upload excel mis file
 
   getMisData(): Observable<IMis[]> {
     console.log('Getting MIS Data from Backend...');
-    return this.http.get(this.endpoint)
+    return this.http.get(this.endpoint, this.options)
     .map(this.extractData)
     .catch(this.handleError);
   }

@@ -1,0 +1,27 @@
+[
+    {
+        "menuId": 201,
+        "menuName":"Candidates",
+        "menuLink":"/candidates",
+        "isActive":true
+    },
+    {
+        "menuId":202,
+        "menuName":"MIS",
+        "menuLink":"/mis",
+        "isActive":true
+    },
+    {
+        "menuId":203,
+        "menuName":"BSNL DSR",
+        "menuLink":"/dsrBsnl",
+        "isActive":true
+    },
+    {
+        "menuId":204,
+        "menuName":"Vodafone DSR",
+        "menuLink":"/dsrVodafone",
+        "isActive":true
+    }
+]
+

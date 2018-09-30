@@ -18,5 +18,8 @@ public interface IRdsmsService {
 	User createUser(User user);
 	User updateUser(Long userId, User user);
 	User getUserByUserId(Long userId);
+	boolean validateUserName(User user);
+	boolean validateEmail(User user);
 	boolean deleteUser(Long userId);
+	User getUserByEmail(String email);
 }

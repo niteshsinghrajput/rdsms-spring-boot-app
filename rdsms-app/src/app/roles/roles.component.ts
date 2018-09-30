@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RolesService } from '../roles.service';
-import { IRole } from '../role';
+import { RolesService } from '../service/roles.service';
+import { IRole } from '../models/role';
 import { RoleFormComponent } from '../role-form/role-form.component';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

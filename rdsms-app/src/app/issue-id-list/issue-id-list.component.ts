@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IssueIdService } from '../issue-id.service';
-import { IdAllocation } from '../id-allocation';
+import { IssueIdService } from '../service/issue-id.service';
+import { IdAllocation } from '../models/id-allocation';
 
 @Component({
   selector: 'app-issue-id-list',

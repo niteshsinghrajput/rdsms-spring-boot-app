@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/observable';
-import { IdAllocation } from './id-allocation';
+import { IdAllocation } from '../models/id-allocation';
+import { AuthService } from '../service/auth.service';
+import { AppComponent } from '../app.component';
 
 @Injectable()
 export class IssueIdService {
 
-  private endpoint = 'http://localhost:8080/idservice/';
-  constructor(private http: Http) { }
+  constructor(private http: Http, private service: AuthService) { }
+
+  private endpoint = AppComponent.API_URL + '/idservice';
+  private options = this.service.getAuthHeaders();
 
   issueID(allocateId) {
     console.log('Assigning ID to candidate...' + allocateId);
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json'});
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.post(this.endpoint + 'allocateid', allocateId, options)
+    return this.http.post(this.endpoint + '/allocateid', allocateId, this.options)
     .map(success => success.status)
     .catch(this.handleError);
 
@@ -21,25 +23,21 @@ export class IssueIdService {
 
   getAllocatedIDs() {
     console.log('Getting allocated IDs from backend...!!');
-    return this.http.get(this.endpoint + 'allocatedid')
+    return this.http.get(this.endpoint + '/allocatedid', this.options)
           .map(this.extractData)
           .catch(this.handleError);
   }
 
   updateAllocatedId(id: IdAllocation) {
     console.log('updateAllocatedId called...');
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.put(this.endpoint + 'allocatedid/' + id.issueId, id, options)
+    return this.http.put(this.endpoint + 'allocatedid/' + id.issueId, id, this.options)
             .map(success => success.status)
             .catch(this.handleError);
   }
 
   deleteID(id): Observable<number> {
     console.log('Deleting Allocated [id = ' + id + '] from backend');
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.delete(this.endpoint + 'deallocateid' + '/' + id)
+    return this.http.delete(this.endpoint + 'deallocateid' + '/' + id, this.options)
           .map(success => success.status)
           .catch(this.handleError);
   }

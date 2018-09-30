@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { IUser } from '../user';
-import { UsersService } from '../users.service';
-import { IRole } from '../role';
-import { RolesService } from '../roles.service';
+import { IUser } from '../models/user';
+import { UsersService } from '../service/users.service';
+import { IRole } from '../models/role';
+import { RolesService } from '../service/roles.service';
 
 @Component({
   selector: 'app-user-form',

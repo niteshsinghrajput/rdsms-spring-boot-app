@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OperatortypeService } from '../operatortype.service';
-import { IOperatorType } from '../operatortype';
+import { OperatortypeService } from '../service/operatortype.service';
+import { IOperatorType } from '../models/operatortype';
 
 /**
  * @author Nitesh
@@ -15,7 +15,7 @@ import { IOperatorType } from '../operatortype';
 export class OperatortypeComponent implements OnInit {
 
   operatorTypes: IOperatorType[];
-  selectedOperatorType: IOperatorType;
+  selectedOperatorType: IOperatorType | any;
   public message: string;
   public displayMessage = false;
 
@@ -28,12 +28,13 @@ export class OperatortypeComponent implements OnInit {
   onAddNew() {
     console.log('onAddNew called..');
     this.selectedOperatorType = {
-      'operatorTypeId': 0,
+      'operatorTypeId': 0
+      /* ,
       'operatorType' : 'Enter Operator Type',
       'operator': {
         'operatorId': 0
       },
-      'active': true
+      'active': true */
     };
     console.log(this.selectedOperatorType.operatorTypeId);
   }

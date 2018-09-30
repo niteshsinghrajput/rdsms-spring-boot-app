@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { ICandidate } from '../candidate';
-import { IBranch } from '../branch';
-import { CandidateService } from '../candidate.service';
-import { BranchService } from '../branch.service';
+import { ICandidate } from '../models/candidate';
+import { IBranch } from '../models/branch';
+import { CandidateService } from '../service/candidate.service';
+import { BranchService } from '../service/branch.service';
 import { DatePipe } from '@angular/common';
-import { IDirector } from '../director';
 
 @Component({
   selector: 'app-candidate-form',

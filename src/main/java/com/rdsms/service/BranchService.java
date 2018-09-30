@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.rdsms.dao.IBranchDAO;
 import com.rdsms.entity.Branch;
+import com.rdsms.entity.Candidate;
 
 @Service
 public class BranchService implements IBranchService {
@@ -37,6 +38,11 @@ public class BranchService implements IBranchService {
 	@Override
 	public boolean deleteBranch(int branchId) {
 		return dao.deleteBranch(branchId);
+	}
+	
+	@Override
+	public int getCandidatesByBranchId(int branchId){
+		return dao.getCandidatesByBranchId(branchId);
 	}
 
 }

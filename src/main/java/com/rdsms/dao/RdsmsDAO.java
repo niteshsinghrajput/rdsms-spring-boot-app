@@ -82,6 +82,7 @@ public class RdsmsDAO implements IRdsmsDAO {
 			roles.add(role);
 		}
 		user.setRoles(roles);
+		System.out.println("User :: " + user);
 		entityManager.persist(user);
 		User lastInsertedUser = getLastInsertedUser();
 		return lastInsertedUser;

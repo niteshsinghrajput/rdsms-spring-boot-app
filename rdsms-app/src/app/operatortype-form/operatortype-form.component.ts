@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { IOperatorType } from '../operatortype';
-import { OperatortypeService } from '../operatortype.service';
-import { OperatorService } from '../operator.service';
-import { IOperator } from '../operator';
+import { IOperatorType } from '../models/operatortype';
+import { OperatortypeService } from '../service/operatortype.service';
+import { OperatorService } from '../service/operator.service';
+import { IOperator } from '../models/operator';
 
 @Component({
   selector: 'app-operatortype-form',
@@ -45,11 +45,12 @@ export class OperatortypeFormComponent implements OnInit {
   }
 
   addOperatorType() {
-    console.log('AddOperatorType called..');
+    console.log('AddOperatorType called..', this.selectedOperator);
     console.log(JSON.stringify(this.operatorType));
 
     const operatorTypeData = JSON.parse(JSON.stringify(this.operatorType));
-    operatorTypeData.operator = {'operatorId': this.selectedOperator.operatorId};
+    operatorTypeData.operator = {'operatorId': this.operatorType.operator};
+    console.log('Hiii ', operatorTypeData);
     this.service.createOperatorType(operatorTypeData)
     .subscribe(successCode => {
       if (successCode === 200) {

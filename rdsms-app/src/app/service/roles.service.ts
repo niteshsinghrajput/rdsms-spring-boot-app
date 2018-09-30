@@ -3,57 +3,49 @@ import {Http, Headers, RequestOptions, RequestMethod, Response } from '@angular/
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { IRole } from './role';
+import { IRole } from '../models/role';
+import { AuthService } from './auth.service';
+import { AppComponent } from '../app.component';
 
 
 
 @Injectable()
 export class RolesService {
 
-  constructor(private http: Http) { }
-  private endpoint = 'http://localhost:8080/rdsmsservice/roles';
-   // private endpoint = '/assets/data/roles.json';
+  constructor(private http: Http, private service: AuthService) { }
+  private endpoint = AppComponent.API_URL + '/rdsmsservice/roles';
+  private options = this.service.getAuthHeaders();
 
   // create role
   createRole(role: IRole): Observable<number> {
     console.log('Create Role Called...');
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.post(this.endpoint, role, options)
+    return this.http.post(this.endpoint, role, this.options)
             .map(success => success.status)
             .catch(this.handleError);
   }
 
   // read role from backend
   getRoles(): Observable<IRole[]> {
-    return this.http.get(this.endpoint)
+    return this.http.get(this.endpoint, this.options)
           .map(this.extractData)
           .catch(this.handleError);
 
   }
 
   getRoleById(roleId: string): Observable<IRole> {
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    console.log(this.endpoint + '/' + roleId);
-    return this.http.get(this.endpoint + '/' + roleId)
+    return this.http.get(this.endpoint + '/' + roleId, this.options)
        .map(this.extractData)
        .catch(this.handleError);
   }
 
   updateRole(role: IRole): Observable<number> {
-    console.log('updating role in backend..');
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.put(this.endpoint + '/' + role.roleId, role, options)
+    return this.http.put(this.endpoint + '/' + role.roleId, role, this.options)
             .map(success => success.status)
             .catch(this.handleError);
   }
 
   deleteRoleById(roleId: string): Observable<number> {
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.delete(this.endpoint + '/' + roleId)
+    return this.http.delete(this.endpoint + '/' + roleId, this.options)
           .map(success => success.status)
           .catch(this.handleError);
   }
@@ -67,6 +59,5 @@ export class RolesService {
         console.error(error.message || error);
         return Observable.throw(error.status);
       }
-
 }
 

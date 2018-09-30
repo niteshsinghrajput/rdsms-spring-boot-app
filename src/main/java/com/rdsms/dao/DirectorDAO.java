@@ -42,6 +42,7 @@ public class DirectorDAO implements IDirectorDAO {
 		User updatedBy = manager.find(User.class, director.getUpdatedBy().getUserId());
 		director.setCreatedBy(createdBy);
 		director.setUpdatedBy(updatedBy);
+		
 		manager.persist(director);
 		director = lastInsertedDirector();
 		return director;

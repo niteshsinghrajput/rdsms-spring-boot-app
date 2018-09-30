@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { IRole } from '../role';
-import { RolesService } from '../roles.service';
+import { IRole } from '../models/role';
+import { RolesService } from '../service/roles.service';
 
 @Component({
   selector: 'app-role-form',

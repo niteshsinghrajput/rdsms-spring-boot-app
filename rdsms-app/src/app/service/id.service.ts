@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/observable';
-import { ID } from './id';
+import { ID } from '../models/id';
+import { AuthService } from '../service/auth.service';
+import { AppComponent } from '../app.component';
 
 @Injectable()
 export class IdService {
 
-  private endpoint = 'http://localhost:8080/idservice/id';
-  constructor(private http: Http) { }
+  constructor(private http: Http, private service: AuthService) { }
+
+  private endpoint = AppComponent.API_URL + '/idservice';
+  private options = this.service.getAuthHeaders();
 
   createID(id) {
     console.log('Adding new ID into backend database..' + id);
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json'});
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.post(this.endpoint, id, options)
+    return this.http.post(this.endpoint + '/id', id, this.options)
     .map(success => success.status)
     .catch(this.handleError);
 
@@ -21,32 +23,28 @@ export class IdService {
 
   getIDs() {
     console.log('Getting IDs from backend...!!');
-    return this.http.get(this.endpoint)
+    return this.http.get(this.endpoint + '/id', this.options)
           .map(this.extractData)
           .catch(this.handleError);
   }
 
   getAvailableIDs() {
     console.log('Getting Available IDs from backend..!!');
-    return this.http.get('http://localhost:8080/idservice/availableid')
+    return this.http.get(this.endpoint + '/availableid', this.options)
           .map(this.extractData)
           .catch(this.handleError);
   }
 
   updateID(id: ID): Observable<number> {
     console.log('updating ID in backend..' + id);
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.put(this.endpoint + '/' + id.id, id, options)
+    return this.http.put(this.endpoint + '/id/' + id.id, id, this.options)
             .map(success => success.status)
             .catch(this.handleError);
   }
 
   deleteID(id): Observable<number> {
     console.log('Deleting ID [id = ' + id + '] from backend');
-    const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: cpHeaders });
-    return this.http.delete(this.endpoint + '/' + id)
+    return this.http.delete(this.endpoint + '/id/' + id, this.options)
           .map(success => success.status)
           .catch(this.handleError);
   }

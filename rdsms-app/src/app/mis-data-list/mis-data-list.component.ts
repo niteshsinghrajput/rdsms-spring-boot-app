@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { IMis } from '../mis';
-import { MisDataService } from '../mis-data.service';
+import { IMis } from '../models/mis';
+import { MisDataService } from '../service/mis-data.service';
 
 @Component({
   selector: 'app-mis-data-list',
   templateUrl: './mis-data-list.component.html',
-  styleUrls: ['./mis-data-list.component.css']
+  styleUrls: ['./mis-data-list.component.css'],
+  providers: [MisDataService]
 })
 export class MisDataListComponent implements OnInit {
 
@@ -45,7 +46,7 @@ export class MisDataListComponent implements OnInit {
         this.displayAlert(this.message);
         this.getMISData();
       }
-      if (successCode === 400){
+      if (successCode === 400) {
         this.message = 'Problem occured while upload MIS Data File ( ' + this.selectedFile.name + ')';
         this.displayAlert(this.message);
         this.getMISData();

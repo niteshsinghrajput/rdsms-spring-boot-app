@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { BranchService } from '../branch.service';
-import { IBranch } from '../branch';
-import { IDirector } from '../director';
+import { BranchService } from '../service/branch.service';
+import { IBranch } from '../models/branch';
+import { IDirector } from '../models/director';
 import { DatePipe } from '@angular/common';
-import { DirectorService } from '../director.service';
+import { DirectorService } from '../service/director.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class BranchFormComponent implements OnInit {
   @ViewChild('closeBtn') closeBtn: ElementRef;
 
   @Input()
-  branch: IBranch;
+  branch: IBranch | any;
 
   @Output()
   branchUpdated = new EventEmitter();
@@ -29,6 +29,7 @@ export class BranchFormComponent implements OnInit {
 
   public directors: IDirector[];
   public selectedDirector: IDirector;
+  private isValid = false;
 
   constructor(private branchService: BranchService, private directorService: DirectorService, public datepipe: DatePipe) { }
 
@@ -51,10 +52,10 @@ export class BranchFormComponent implements OnInit {
     }
 
     this.branchService.createBranch(branchData)
-    .subscribe(successCode => {
-      if (successCode === 200) {
+    .subscribe(branch => {
+      if (branch.branchId !== 0) {
         console.log('Branch (' + branchData + ') has been added Successfully...!!');
-        this.branchAdded.emit({ branch: branchData });
+        this.branchAdded.emit({ branch: branch });
         this.closeModal();
       }
     });
@@ -94,12 +95,20 @@ export class BranchFormComponent implements OnInit {
     console.log('Before sending data to update in db...');
     console.log(updatedBranchData);
 
-    this.branchService.updateBranch(updatedBranchData)
+    /* this.branchService.updateBranch(updatedBranchData)
     .subscribe(successCode => {
       if (successCode === 200) {
         console.log('Branch with ID = ' + updatedBranchData.branchId + ' has been updated Successfully..!!');
         console.log(updatedBranchData);
         this.branchUpdated.emit({ branch: branchData });
+        this.closeModal();
+      }
+    }); */
+    this.branchService.updateBranch(updatedBranchData)
+    .subscribe(branch => {
+      if (branch.branchId !== 0) {
+        console.log('Branch (' + branchData + ') has been added Successfully...!!');
+        this.branchUpdated.emit({ branch: branch });
         this.closeModal();
       }
     });
@@ -108,6 +117,8 @@ export class BranchFormComponent implements OnInit {
   ngOnInit() {
     this.branch = {
       'branchId': 0,
+      'director': {'directorId': 0},
+      /* ,
       'branchName': 'Enter Branch Name',
       'address': 'Enter Address',
       'city': 'Enter City',
@@ -117,7 +128,7 @@ export class BranchFormComponent implements OnInit {
       'updatedBy': {'userId': 0},
       'updatedOn': new Date(),
       'director': {'directorId': 0},
-      'active': false
+      'active': false */
     };
 
     this.directorService.getDirectors().subscribe(data => this.directors = data);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DsrService } from '../dsr.service';
-import { IDsrVodafone } from '../dsr-vodafone';
+import { DsrService } from '../service/dsr.service';
+import { IDsrVodafone } from '../models/dsr-vodafone';
 
 @Component({
   selector: 'app-dsr-vodafone',

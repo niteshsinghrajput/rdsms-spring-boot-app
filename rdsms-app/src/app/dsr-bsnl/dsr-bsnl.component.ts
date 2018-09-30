@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IDsrBsnl} from '../dsr-bsnl';
-import {DsrService} from '../dsr.service';
+import {IDsrBsnl} from '../models/dsr-bsnl';
+import {DsrService} from '../service/dsr.service';
 
 @Component({
   selector: 'app-dsr-bsnl',
