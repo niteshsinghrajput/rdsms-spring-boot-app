@@ -4,14 +4,17 @@
     <div class="panel panel-default">
       <table>
         <tr>
-            <td><label for="dsr_bsnl">Select DSR BSNL File</label></td>
-            <td>
+            <td *ngIf="this.currentRole===ROLE_ADMIN"><label for="dsr_bsnl">Select DSR BSNL File</label></td>
+            <td *ngIf="this.currentRole===ROLE_ADMIN">
                 <input type="file" [(ngModel)]="fileName" name="fileName" 
                 (change)="selectFile($event);" class="form-control-file"> 
             </td>
             <td>
-              <button type="button" class="btn btn-primary btn-sm"(click)="uploadDsr();">
+              <button type="button" class="btn btn-primary btn-sm"(click)="uploadDsr();" *ngIf="this.currentRole===ROLE_ADMIN">
                 Upload
+              </button>
+              <button type="button" class="btn btn-primary btn-sm" (click)="exportAsXLSX()">
+                  Download
               </button>
             </td>
             <td>

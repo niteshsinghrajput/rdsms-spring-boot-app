@@ -15,7 +15,7 @@ export class RoleFormComponent implements OnInit {
   @ViewChild('closeBtn') closeBtn: ElementRef;
 
   @Input()
-  role: IRole;
+  role: IRole | any;
 
   @Output()
   roleUpdated = new EventEmitter();
@@ -79,20 +79,20 @@ export class RoleFormComponent implements OnInit {
   ngOnInit() {
       console.log('ngOnInit called...!!!');
       this.role = {
-        roleId: 0,
+        roleId: 0/* ,
         roleName: 'Enter Role..',
         description: 'Enter Role Description..',
-        active: true
+        active: true */
       };
     }
 
   private closeModal(): void {
       this.closeBtn.nativeElement.click();
       this.role = {
-        roleId: 0,
+        roleId: 0/* ,
         roleName: 'Enter Role..',
         description: 'Enter Role Description..',
-        active: true
+        active: true */
       };
   }
 

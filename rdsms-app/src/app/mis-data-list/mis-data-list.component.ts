@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { IMis } from '../models/mis';
 import { MisDataService } from '../service/mis-data.service';
+import { ExcelService } from '../service/excel.service';
 
 @Component({
   selector: 'app-mis-data-list',
   templateUrl: './mis-data-list.component.html',
   styleUrls: ['./mis-data-list.component.css'],
-  providers: [MisDataService]
+  providers: [MisDataService, ExcelService]
 })
 export class MisDataListComponent implements OnInit {
 
@@ -15,9 +16,10 @@ export class MisDataListComponent implements OnInit {
   selectedFile: File = null;
   message: String = null;
   displayMessage = false;
+  public currentRole = localStorage.getItem('currentRole');
 
 
-  constructor(private misService: MisDataService) { }
+  constructor(private misService: MisDataService, private service: ExcelService) { }
 
   showDetail(misContent) {
     console.log('showDetail function of mis-data component called...!!!');
@@ -72,5 +74,10 @@ export class MisDataListComponent implements OnInit {
     console.log('Getting data from mis-data service..');
     this.getMISData();
   }
+
+   exportAsXLSX(): void {
+    this.service.exportAsExcelFile(this.mis, 'mis');
+ }
+
 
 }

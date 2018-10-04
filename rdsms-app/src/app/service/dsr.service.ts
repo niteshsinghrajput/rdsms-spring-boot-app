@@ -20,9 +20,12 @@ export class DsrService {
 
   uploadBsnlDsrData(file: File) {
     console.log('uploading bsnl dsr data ..' + file);
+    const authToken = JSON.parse(localStorage.getItem('authToken'));
+    const cpHeaders = new Headers({ 'Authorization': 'Bearer ' + authToken.accessToken });
+    const options = new RequestOptions({ headers: cpHeaders });
     const formData: FormData = new FormData();
     formData.append('fileName', file, file.name);
-    return this.http.post(this.endpoint + '/dsrBsnl', formData, this.options)
+    return this.http.post(this.endpoint + '/dsrBsnl', formData, options)
             .map(success => success.status)
             .catch(this.handleError);
   }
@@ -36,9 +39,12 @@ export class DsrService {
 
   uploadVodaDsrData(file: File) {
     console.log('uploading vodafone dsr data ..' + file);
+    const authToken = JSON.parse(localStorage.getItem('authToken'));
+    const cpHeaders = new Headers({ 'Authorization': 'Bearer ' + authToken.accessToken });
+    const options = new RequestOptions({ headers: cpHeaders });
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post(this.endpoint + '/dsrVodafone', formData, this.options)
+    return this.http.post(this.endpoint + '/dsrVodafone', formData, options)
       .map(success => success.status)
       .catch(this.handleError);
   }

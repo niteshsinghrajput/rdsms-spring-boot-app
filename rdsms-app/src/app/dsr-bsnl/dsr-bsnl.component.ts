@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {IDsrBsnl} from '../models/dsr-bsnl';
 import {DsrService} from '../service/dsr.service';
+import { ExcelService } from '../service/excel.service';
 
 @Component({
   selector: 'app-dsr-bsnl',
   templateUrl: './dsr-bsnl.component.html',
   styleUrls: ['./dsr-bsnl.component.css'],
-  providers: [DsrService]
+  providers: [DsrService, ExcelService]
 })
 export class DsrBsnlComponent implements OnInit {
 
   selectedFile: File;
-  constructor(private dsrService: DsrService) { }
+  constructor(private dsrService: DsrService, private service: ExcelService) { }
   dsrBsnl: IDsrBsnl[];
   public message: string = null;
   public displayMessage = false;
+  public currentRole = localStorage.getItem('currentRole');
 
   ngOnInit() {
       console.log('Getting list of directors from director service...');
@@ -61,5 +63,9 @@ export class DsrBsnlComponent implements OnInit {
       this.message = '';
     }, 5000);
   }
+
+  exportAsXLSX(): void {
+    this.service.exportAsExcelFile(this.dsrBsnl, 'dsrBsnl');
+ }
 
 }

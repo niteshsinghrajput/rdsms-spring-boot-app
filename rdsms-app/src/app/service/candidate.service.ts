@@ -55,6 +55,6 @@ export class CandidateService {
 
   private handleError (error: Response | any) {
     console.error(error.message || error);
-    return Observable.throw(error.status);
+    return Observable.throw(error);
     }
 }

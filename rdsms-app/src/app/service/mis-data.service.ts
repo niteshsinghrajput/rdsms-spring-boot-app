@@ -24,10 +24,11 @@ export class MisDataService {
 
   uploadMISData(file: File) {
     console.log('uploading MIS Data ..' + file);
-    const headers = new Headers();
     const formData: FormData = new FormData();
+    const authToken = JSON.parse(localStorage.getItem('authToken'));
+    const cpHeaders = new Headers({ 'Authorization': 'Bearer ' + authToken.accessToken });
+    const options = new RequestOptions({ headers: cpHeaders });
     formData.append('file', file, file.name);
-    const options = new RequestOptions({ headers: headers });
     return this.http.post(this.endpoint, formData, options)
       .map(success => success.status)
       .catch(this.handleError);
@@ -39,8 +40,8 @@ export class MisDataService {
   }
 
   private handleError (error: Response | any) {
-  console.error(error.message || error);
-  return Observable.throw(error.status);
+    console.error(error.message || error);
+    return Observable.throw(error.status);
   }
 
 }

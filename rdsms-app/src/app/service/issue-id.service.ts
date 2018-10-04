@@ -30,14 +30,14 @@ export class IssueIdService {
 
   updateAllocatedId(id: IdAllocation) {
     console.log('updateAllocatedId called...');
-    return this.http.put(this.endpoint + 'allocatedid/' + id.issueId, id, this.options)
+    return this.http.put(this.endpoint + '/allocatedid/' + id.issueId, id, this.options)
             .map(success => success.status)
             .catch(this.handleError);
   }
 
   deleteID(id): Observable<number> {
     console.log('Deleting Allocated [id = ' + id + '] from backend');
-    return this.http.delete(this.endpoint + 'deallocateid' + '/' + id, this.options)
+    return this.http.delete(this.endpoint + '/deallocateid' + '/' + id, this.options)
           .map(success => success.status)
           .catch(this.handleError);
   }
