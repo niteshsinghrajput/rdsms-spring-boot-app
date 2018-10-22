@@ -2,6 +2,13 @@
     padding-top: 5px;
 }
 
+.search-box{
+    font-size: 12px;
+    width: 200px;
+    border: 2px solid #034f84;
+    height: 35px;
+}
+
 th{
     white-space: nowrap;
     font-size: small;

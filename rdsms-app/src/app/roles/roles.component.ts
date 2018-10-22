@@ -18,6 +18,7 @@ export class RolesComponent implements OnInit {
   selectedRole: IRole;
   public message: string;
   public displayMessage = true;
+  // public searchText = null;
 
   onEdit(role) {
     console.log('onEdit function called...!!!');
@@ -78,5 +79,12 @@ export class RolesComponent implements OnInit {
     this.roleService.getRoles()
         .subscribe(data => this.roles = data);
   }
+
+  // filterUser() {
+  //   console.log('Search Text..', this.searchText);
+  //   // this.roles = this.roles.filter(this.searchText);
+  //   this.roles = this.roles.filter(
+  //     role => role.roleName === this.searchText);
+  // }
 
 }

@@ -12,6 +12,7 @@ export class RoleFormComponent implements OnInit {
 
   public title_add = 'Add New Role';
   public title_update = 'Update Role Detail';
+  public errorMessage;
   @ViewChild('closeBtn') closeBtn: ElementRef;
 
   @Input()
@@ -74,7 +75,7 @@ export class RoleFormComponent implements OnInit {
     });
   }
 
-   constructor(private roleService: RolesService) { }
+  constructor(private roleService: RolesService) { }
 
   ngOnInit() {
       console.log('ngOnInit called...!!!');
@@ -86,7 +87,7 @@ export class RoleFormComponent implements OnInit {
       };
     }
 
-  private closeModal(): void {
+  closeModal(): void {
       this.closeBtn.nativeElement.click();
       this.role = {
         roleId: 0/* ,
@@ -96,5 +97,6 @@ export class RoleFormComponent implements OnInit {
       };
   }
 
-  }
+
+}
 

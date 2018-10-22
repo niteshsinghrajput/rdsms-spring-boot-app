@@ -6,7 +6,7 @@
         <div style="float:left;">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
             <i class="fa fa-plus" aria-hidden="true"></i></button>
-            <input type="text" id="searchbox" value="Enter Branch Name to Search" class="search-box"/>
+            <input type="text" id="searchbox" [(ngModel)]="searchText" placeholder="Enter Branch Name to Search" class="search-box"/>
             <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
             <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
               {{ this.message }}
@@ -38,7 +38,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor = "let branch of branches">
+        <tr *ngFor = "let branch of branches | branchFilter : searchText">
           <td>{{ branch.branchId }}</td>
           <td>{{ branch.branchName }}</td>
           <td>{{ branch.director.directorName }}</td>

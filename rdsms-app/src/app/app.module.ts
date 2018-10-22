@@ -37,33 +37,24 @@ import { LoginComponent } from './login/login.component';
 import { UrlPermission } from './url.permission';
 import { RoleGuardService } from './role-guard.service';
 import { AuthService } from './service/auth.service';
-
+import { LoginLogoutComponent } from './login-logout/login-logout.component';
+import { RoleFilterPipe } from './filters/role.filter.pipe';
+import { UserFilterPipe } from './filters/user.filter.pipe';
+import { BranchFilterPipe } from './filters/branch.filter.pipe';
+import { CandidateFilterPipe } from './filters/candidate.filter.pipe';
+import { IdFilterPipe } from './filters/id.filter.pipe';
+import { IssueIdFilterPipe } from './filters/issue-id.filter.pipe';
+import { DirectorFilterPipe } from './filters/director.filter.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    MenuComponent,
-    routingComponents,
-    RoleFormComponent,
-    UserFormComponent,
-    MisDataListComponent,
-    DirectorListComponent,
-    DsrBsnlComponent,
-    DsrVodafoneComponent,
-    BranchFormComponent,
-    CandidateFormComponent,
-    DirectorFormComponent,
-    OperatorComponent,
-    OperatortypeComponent,
-    OperatorFormComponent,
-    OperatortypeFormComponent,
-    IdListComponent,
-    IdFormComponent,
-    IssueIdFormComponent,
-    IssueIdListComponent,
-    LoginComponent
+    AppComponent, HeaderComponent, FooterComponent, MenuComponent,
+    routingComponents, RoleFormComponent, UserFormComponent, MisDataListComponent,
+    DirectorListComponent, DsrBsnlComponent, DsrVodafoneComponent, BranchFormComponent,
+    CandidateFormComponent, DirectorFormComponent, OperatorComponent, OperatortypeComponent,
+    OperatorFormComponent, OperatortypeFormComponent, IdListComponent, IdFormComponent, IssueIdFormComponent,
+    IssueIdListComponent, LoginComponent, LoginLogoutComponent, RoleFilterPipe, UserFilterPipe, BranchFilterPipe,
+    CandidateFilterPipe, IdFilterPipe, IssueIdFilterPipe, DirectorFilterPipe
   ],
   imports: [
     BrowserModule,

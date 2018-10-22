@@ -14,7 +14,7 @@ export class AuthService {
     const cpHeaders = new Headers({ 'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: cpHeaders });
     const userLoginPayload = {
-      'usernameOrEmail': user.username,
+      'usernameOrEmail': user.userName,
       'password': user.password
     };
     console.log('user payload :: ' + JSON.stringify(userLoginPayload));
@@ -24,7 +24,7 @@ export class AuthService {
       const user1 = response.json(); // the returned user object is a principal object
       if (user1) {
         // store user details  in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user.username));
+        localStorage.setItem('currentUser', JSON.stringify(user.userName));
         localStorage.setItem('authToken', JSON.stringify(user1) );
         console.log('User Details :: ' + localStorage.getItem('currentUser'));
         console.log('JWT Details :: ' + localStorage.getItem('authToken'));
