@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CandidateService } from '../candidate.service';
-import { ICandidate } from '../candidate';
+import { CandidateService } from '../service/candidate.service';
+import { ICandidate } from '../models/candidate';
 
 @Component({
   selector: 'app-candidate-list',

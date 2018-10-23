@@ -37,7 +37,7 @@ public class RdsmsDAO implements IRdsmsDAO {
 	}
 	
 	@Override
-	public Role getRoleByRoleId(int roleId) {
+	public Role getRoleByRoleId(Long roleId) {
 		return entityManager.find(Role.class, roleId);
 	}
 	
@@ -51,7 +51,7 @@ public class RdsmsDAO implements IRdsmsDAO {
 	}
 	
 	@Override
-	public Role updateRole(int roleId,Role role) {
+	public Role updateRole(Long roleId,Role role) {
 		
 		//Get Role from Database
 		Role existingRole = getRoleByRoleId(roleId);
@@ -82,6 +82,7 @@ public class RdsmsDAO implements IRdsmsDAO {
 			roles.add(role);
 		}
 		user.setRoles(roles);
+		System.out.println("User :: " + user);
 		entityManager.persist(user);
 		User lastInsertedUser = getLastInsertedUser();
 		return lastInsertedUser;
@@ -97,7 +98,7 @@ public class RdsmsDAO implements IRdsmsDAO {
 	}
 	
 	@Override
-	public boolean deleteRole(int roleId) {
+	public boolean deleteRole(Long roleId) {
 		
 		Role role = getRoleByRoleId(roleId);
 		entityManager.remove(role);
@@ -116,12 +117,12 @@ public class RdsmsDAO implements IRdsmsDAO {
 	}
 	
 	@Override
-	public User getUserByUserId(int userId) {
+	public User getUserByUserId(Long userId) {
 		return entityManager.find(User.class, userId);
 	}
 
 	@Override
-	public User updateUser(int userId, User user) {
+	public User updateUser(Long userId, User user) {
 
 		Set<Role> roles = user.getRoles();
 		Set<Role> updatedRoles = new HashSet<Role>();
@@ -148,7 +149,7 @@ public class RdsmsDAO implements IRdsmsDAO {
 	}
 
 	@Override
-	public boolean deleteUser(int userId) {
+	public boolean deleteUser(Long userId) {
 		
 		User user = getUserByUserId(userId);
 		Set<Role> roles = user.getRoles();
@@ -164,10 +165,6 @@ public class RdsmsDAO implements IRdsmsDAO {
 		else
 			return true;
 	}
-	
-	
-	
-	
-	
+
 
 }

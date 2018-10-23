@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
-import { IDirector } from '../director';
-import { DirectorService } from '../director.service';
+import { IDirector } from '../models/director';
+import { DirectorService } from '../service/director.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -32,6 +32,7 @@ export class DirectorFormComponent implements OnInit {
     'createdBy': { 'userId': 0 }, 'updatedBy': { 'userId': 0 },
     'active': true
 };
+
 
   constructor(private directorService: DirectorService, public datepipe: DatePipe) { }
 

@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { DsrService } from '../dsr.service';
-import { IDsrVodafone } from '../dsr-vodafone';
+import { DsrService } from '../service/dsr.service';
+import { IDsrVodafone } from '../models/dsr-vodafone';
+import { ExcelService } from '../service/excel.service';
 
 @Component({
   selector: 'app-dsr-vodafone',
   templateUrl: './dsr-vodafone.component.html',
   styleUrls: ['./dsr-vodafone.component.css'],
-  providers: [DsrService]
+  providers: [DsrService, ExcelService]
 })
 export class DsrVodafoneComponent implements OnInit {
 
   selectedFile: File = null;
   message: String = null;
   displayMessage = false;
-  constructor(private dsrService: DsrService) { }
+  constructor(private dsrService: DsrService, private service: ExcelService) { }
   dsrVodafones: IDsrVodafone[];
+  public currentRole = localStorage.getItem('currentRole');
 
   ngOnInit() {
     console.log('Getting dsr-vodafone data from dsr-service...');
@@ -64,5 +66,9 @@ export class DsrVodafoneComponent implements OnInit {
       this.message = '';
     }, 5000);
   }
+
+  exportAsXLSX(): void {
+    this.service.exportAsExcelFile(this.dsrVodafones, 'DSR_Vodafone');
+ }
 
 }

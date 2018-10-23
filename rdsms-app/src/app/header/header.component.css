@@ -16,3 +16,12 @@ header {
    padding: 20px;
 }
 
+.logged-user {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        padding-right: 25px;
+        padding-top: 25px;
+        font-weight: initial;
+}
+

@@ -12,31 +12,37 @@
           </div>
           
           <!-- Modal body -->
-          <form>
+          <form name="form-role" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
           <div class="modal-body">
-              <div class="form-group">
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !roleName.valid }">
                 <label for="roleName">Role Name *</label>
-                <input required [(ngModel)]="role.roleName" name="roleName" class="form-control">
+                <input required [(ngModel)]="role.roleName" name="roleName" class="form-control"
+                placeholder="Role Name" #roleName="ngModel" required />
               </div>
+              <div *ngIf="f.submitted && !roleName.valid" class="alert alert-danger">A role name is required</div>
               <div class="form-group">
                 <label for="description">Description</label>
-                <textarea required  [(ngModel)]="role.description" name="description" class="form-control" rows="5">
+                <textarea required  [(ngModel)]="role.description" name="description" class="form-control" rows="5"
+                placeholder="Description" #description="ngModel" required>
                 </textarea>
               </div>
+              <div *ngIf="f.submitted && !description.valid" class="alert alert-danger">description is required</div>
               <div class="form-group">
                 <label for="active">Status</label>
-                <select  [(ngModel)]="role.active" name="active" class="form-control">
+                <select  [(ngModel)]="role.active" name="active" class="form-control" required #active="ngModel">
                       <option value="true">Enable</option>
                       <option value="false">Disable</option>
                 </select>
               </div>      
+              <div *ngIf="f.submitted && !active.valid" class="alert alert-danger">Select Status</div>
       </div>
 
           <!-- Modal footer -->
           <div class="modal-footer">
             <input type="button" class="btn btn-primary" [hidden]="!role.roleId" (click)="updateRole();" value="Save"/>
-            <input type="button" class="btn btn-primary" [hidden]="role.roleId" (click)="addRole();" value="Add" />
-            <input type="button" class="btn btn-primary" value="Reset"/>
+            <input type="submit" class="btn btn-primary" [hidden]="role.roleId"  value="Add" (click)="addRole()"/> <!--(click)="addRole();"-->
+            <input type="button" class="btn btn-primary" value="Cancel" (click)="this.closeModal();"/>
           </div> 
         </form>  
         </div>

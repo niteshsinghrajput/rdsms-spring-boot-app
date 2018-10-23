@@ -9,14 +9,17 @@ public interface IRdsmsService {
 	//Role
 	List<Role> getRoles();
 	Role createRole(Role role);
-	Role updateRole(int roleId, Role role);
-	Role getRoleByRoleId(int roleId);
-	boolean deleteRole(int roleId);
+	Role updateRole(Long roleId, Role role);
+	Role getRoleByRoleId(Long roleId);
+	boolean deleteRole(Long roleId);
 	
 	//User
 	List<User> getUsers();
 	User createUser(User user);
-	User updateUser(int userId, User user);
-	User getUserByUserId(int userId);
-	boolean deleteUser(int userId);
+	User updateUser(Long userId, User user);
+	User getUserByUserId(Long userId);
+	boolean validateUserName(User user);
+	boolean validateEmail(User user);
+	boolean deleteUser(Long userId);
+	User getUserByEmail(String email);
 }

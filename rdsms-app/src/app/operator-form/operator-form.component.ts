@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { OperatorService } from '../operator.service';
-import { IOperator } from '../operator';
+import { OperatorService } from '../service/operator.service';
+import { IOperator } from '../models/operator';
 import { DatePipe } from '@angular/common';
 
 @Component({

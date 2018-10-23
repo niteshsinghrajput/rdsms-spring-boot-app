@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { IRole } from '../role';
-import { RolesService } from '../roles.service';
+import { IRole } from '../models/role';
+import { RolesService } from '../service/roles.service';
 
 @Component({
   selector: 'app-role-form',
@@ -12,10 +12,11 @@ export class RoleFormComponent implements OnInit {
 
   public title_add = 'Add New Role';
   public title_update = 'Update Role Detail';
+  public errorMessage;
   @ViewChild('closeBtn') closeBtn: ElementRef;
 
   @Input()
-  role: IRole;
+  role: IRole | any;
 
   @Output()
   roleUpdated = new EventEmitter();
@@ -74,27 +75,28 @@ export class RoleFormComponent implements OnInit {
     });
   }
 
-   constructor(private roleService: RolesService) { }
+  constructor(private roleService: RolesService) { }
 
   ngOnInit() {
       console.log('ngOnInit called...!!!');
       this.role = {
-        roleId: 0,
+        roleId: 0/* ,
         roleName: 'Enter Role..',
         description: 'Enter Role Description..',
-        active: true
+        active: true */
       };
     }
 
-  private closeModal(): void {
+  closeModal(): void {
       this.closeBtn.nativeElement.click();
       this.role = {
-        roleId: 0,
+        roleId: 0/* ,
         roleName: 'Enter Role..',
         description: 'Enter Role Description..',
-        active: true
+        active: true */
       };
   }
 
-  }
+
+}
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RolesService } from '../roles.service';
-import { IRole } from '../role';
+import { RolesService } from '../service/roles.service';
+import { IRole } from '../models/role';
 import { RoleFormComponent } from '../role-form/role-form.component';
+import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-roles',
@@ -16,6 +18,7 @@ export class RolesComponent implements OnInit {
   selectedRole: IRole;
   public message: string;
   public displayMessage = true;
+  // public searchText = null;
 
   onEdit(role) {
     console.log('onEdit function called...!!!');
@@ -68,7 +71,7 @@ export class RolesComponent implements OnInit {
     }, 3000);
   }
 
-  constructor(private roleService: RolesService) { }
+  constructor(private roleService: RolesService, public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
     console.log('getting all roles from backend ...');
@@ -76,5 +79,12 @@ export class RolesComponent implements OnInit {
     this.roleService.getRoles()
         .subscribe(data => this.roles = data);
   }
+
+  // filterUser() {
+  //   console.log('Search Text..', this.searchText);
+  //   // this.roles = this.roles.filter(this.searchText);
+  //   this.roles = this.roles.filter(
+  //     role => role.roleName === this.searchText);
+  // }
 
 }

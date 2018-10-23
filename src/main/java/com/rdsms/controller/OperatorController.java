@@ -108,4 +108,9 @@ public class OperatorController {
 		return new ResponseEntity<String>(message,HttpStatus.OK);
 	}
 	
+	@GetMapping("/operatortype/{operatorId}")
+	public ResponseEntity<List<OperatorType>> getOperatorTypesByOperatorId(@PathVariable("operatorId") int operatorId){
+		List<OperatorType> types = operatorTypeService.getOperatorTypeByOperatorId(operatorId);
+		return new ResponseEntity<List<OperatorType>>(types,HttpStatus.OK);
+	}
 }

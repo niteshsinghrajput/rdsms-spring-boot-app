@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OperatorService } from '../operator.service';
-import { IOperator } from '../operator';
+import { OperatorService } from '../service/operator.service';
+import { IOperator } from '../models/operator';
 
 @Component({
   selector: 'app-operator',
@@ -11,7 +11,7 @@ import { IOperator } from '../operator';
 export class OperatorComponent implements OnInit {
 
   operators: IOperator[];
-  selectedOperator: IOperator;
+  selectedOperator: IOperator | any;
   public message: string;
   public displayMessage = false;
 
@@ -47,14 +47,15 @@ export class OperatorComponent implements OnInit {
   onAddNew() {
     console.log('onAddNew called..');
     this.selectedOperator = {
-      'operatorId': 0,
+      'operatorId': 0
+     /*  ,
       'operatorName' : 'Enter Operator Name',
       'description': 'Enter Operator Description',
       'createdBy' : { 'userId': 1},
       'updatedBy': { 'userId': 1},
       'createdOn': new Date(),
       'updatedOn': new Date(),
-      'active': true
+      'active': true */
     };
     console.log(this.selectedOperator.operatorId);
   }

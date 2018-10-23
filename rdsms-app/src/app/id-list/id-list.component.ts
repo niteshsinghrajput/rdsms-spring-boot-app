@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ID } from '../id';
-import { IdService } from '../id.service';
+import { ID } from '../models/id';
+import { IdService } from '../service/id.service';
 
 @Component({
   selector: 'app-id-list',

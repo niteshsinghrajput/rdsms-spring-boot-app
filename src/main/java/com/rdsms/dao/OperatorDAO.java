@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.rdsms.entity.Operator;
+import com.rdsms.entity.OperatorType;
 import com.rdsms.entity.User;
 
 /**
@@ -18,7 +19,10 @@ import com.rdsms.entity.User;
 
 @Transactional
 @Repository
-public class OperatorDAO implements IOperatorDAO{
+public class OperatorDAO implements IOperatorDAO {
+	
+	@Autowired
+	private OperatorTypeDAO dao;
 
 	@Autowired
 	private EntityManager entityManager;
@@ -70,6 +74,14 @@ public class OperatorDAO implements IOperatorDAO{
 	public boolean deleteOperator(int operatorId) {
 		
 		Operator operator = getOperatorById(operatorId);
+		/*System.out.println("Before deleting : " + operator);
+		List<OperatorType> operatorTypes = dao.getOperatorTypeByOperatorId(operatorId);
+		System.out.println("Total Operator Types :: "+ operatorTypes.size());
+		if(operatorTypes.size()>0) {
+		for(OperatorType type: operatorTypes){
+			operator.getOperatorType().remove(type);
+			}
+		}*/
 		entityManager.remove(operator);
 		entityManager.flush();
 		
@@ -87,7 +99,6 @@ public class OperatorDAO implements IOperatorDAO{
 		query.setMaxResults(1);
 		Operator operator = (Operator)query.getSingleResult();
 		return operator;
-		
 	}
 
 }

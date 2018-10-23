@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { IdAllocation } from '../id-allocation';
-import { ID } from '../id';
-import { ICandidate } from '../candidate';
-import { IdService } from '../id.service';
-import { CandidateService } from '../candidate.service';
-import { IssueIdService } from '../issue-id.service';
+import { IdAllocation } from '../models/id-allocation';
+import { ID } from '../models/id';
+import { ICandidate } from '../models/candidate';
+import { IdService } from '../service/id.service';
+import { CandidateService } from '../service/candidate.service';
+import { IssueIdService } from '../service/issue-id.service';
 
 @Component({
   selector: 'app-issue-id-form',

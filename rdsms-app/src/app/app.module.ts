@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { RolesService } from './roles.service';
-import { MenuService } from './menu.service';
+import { RolesService } from './service/roles.service';
+import { MenuService } from './service/menu.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { UsersService } from './users.service';
-import { BranchService } from './branch.service';
-import { CandidateService } from './candidate.service';
-import { MisDataService } from './mis-data.service';
+import { UsersService } from './service/users.service';
+import { BranchService } from './service/branch.service';
+import { CandidateService } from './service/candidate.service';
+import { MisDataService } from './service/mis-data.service';
 import { RoleFormComponent } from './role-form/role-form.component';
 import { FormsModule } from '@angular/forms';
 import { UserFormComponent } from './user-form/user-form.component';
@@ -20,7 +20,7 @@ import { MisDataListComponent } from './mis-data-list/mis-data-list.component';
 import { DirectorListComponent } from './director-list/director-list.component';
 import { DsrBsnlComponent } from './dsr-bsnl/dsr-bsnl.component';
 import { DsrVodafoneComponent } from './dsr-vodafone/dsr-vodafone.component';
-import { DsrService } from './dsr.service';
+import { DsrService } from './service/dsr.service';
 import { BranchFormComponent } from './branch-form/branch-form.component';
 import { DatePipe } from '@angular/common';
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
@@ -33,32 +33,28 @@ import { IdListComponent } from './id-list/id-list.component';
 import { IdFormComponent } from './id-form/id-form.component';
 import { IssueIdFormComponent } from './issue-id-form/issue-id-form.component';
 import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
-
+import { LoginComponent } from './login/login.component';
+import { UrlPermission } from './url.permission';
+import { RoleGuardService } from './role-guard.service';
+import { AuthService } from './service/auth.service';
+import { LoginLogoutComponent } from './login-logout/login-logout.component';
+import { RoleFilterPipe } from './filters/role.filter.pipe';
+import { UserFilterPipe } from './filters/user.filter.pipe';
+import { BranchFilterPipe } from './filters/branch.filter.pipe';
+import { CandidateFilterPipe } from './filters/candidate.filter.pipe';
+import { IdFilterPipe } from './filters/id.filter.pipe';
+import { IssueIdFilterPipe } from './filters/issue-id.filter.pipe';
+import { DirectorFilterPipe } from './filters/director.filter.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    MenuComponent,
-    routingComponents,
-    RoleFormComponent,
-    UserFormComponent,
-    MisDataListComponent,
-    DirectorListComponent,
-    DsrBsnlComponent,
-    DsrVodafoneComponent,
-    BranchFormComponent,
-    CandidateFormComponent,
-    DirectorFormComponent,
-    OperatorComponent,
-    OperatortypeComponent,
-    OperatorFormComponent,
-    OperatortypeFormComponent,
-    IdListComponent,
-    IdFormComponent,
-    IssueIdFormComponent,
-    IssueIdListComponent
+    AppComponent, HeaderComponent, FooterComponent, MenuComponent,
+    routingComponents, RoleFormComponent, UserFormComponent, MisDataListComponent,
+    DirectorListComponent, DsrBsnlComponent, DsrVodafoneComponent, BranchFormComponent,
+    CandidateFormComponent, DirectorFormComponent, OperatorComponent, OperatortypeComponent,
+    OperatorFormComponent, OperatortypeFormComponent, IdListComponent, IdFormComponent, IssueIdFormComponent,
+    IssueIdListComponent, LoginComponent, LoginLogoutComponent, RoleFilterPipe, UserFilterPipe, BranchFilterPipe,
+    CandidateFilterPipe, IdFilterPipe, IssueIdFilterPipe, DirectorFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -68,7 +64,8 @@ import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
     FormsModule
   ],
   providers: [RolesService, MenuService, UsersService, BranchService,
-    CandidateService, MisDataService, DsrService],
+    CandidateService, MisDataService, DsrService, UrlPermission, AuthService, RoleGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

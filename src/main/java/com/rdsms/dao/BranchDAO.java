@@ -6,9 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Repository;
-
 import com.rdsms.entity.Branch;
 import com.rdsms.entity.Director;
 import com.rdsms.entity.User;
@@ -58,7 +56,6 @@ public class BranchDAO implements IBranchDAO {
 	@Override
 	public Branch updateBranch(int branchId, Branch branch) {
 		
-		System.out.println("Branch Before Update... "+branch);
 		Director director = entityManager.find(Director.class, branch.getDirector().getDirectorId());
 		User createdBy = entityManager.find(User.class, branch.getCreatedBy().getUserId());
 		User updatedBy = entityManager.find(User.class, branch.getUpdatedBy().getUserId());
@@ -73,8 +70,6 @@ public class BranchDAO implements IBranchDAO {
 		existingBranch.setUpdatedBy(updatedBy);
 		existingBranch.setActive(branch.isActive());
 		existingBranch.setCreatedOn(branch.getCreatedOn());
-		
-		System.out.println("After updating the values :::: "+existingBranch);
 		
 		entityManager.flush();
 		Branch br = getBranchById(branchId);
@@ -103,6 +98,16 @@ public class BranchDAO implements IBranchDAO {
 		Branch branch = (Branch)query.getSingleResult();
 		return branch;
 		
+	}
+	
+	@Override
+	public int getCandidatesByBranchId(int branchId){
+		
+		String sql = "SELECT * FROM Candidate as cd WHERE BranchId = :branchId ORDER BY cd.candidateId";
+		Query query  = entityManager.createNativeQuery(sql);
+		query.setParameter("branchId", branchId);
+		List<Object> rows = query.getResultList();
+		return rows.size();
 	}
 
 }

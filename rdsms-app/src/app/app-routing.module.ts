@@ -12,21 +12,27 @@ import { OperatorComponent } from './operator/operator.component';
 import { OperatortypeComponent } from './operatortype/operatortype.component';
 import { IdListComponent } from './id-list/id-list.component';
 import { IssueIdListComponent } from './issue-id-list/issue-id-list.component';
+import { LoginComponent } from './login/login.component';
+import { UrlPermission } from './url.permission';
+import { RoleGuardService } from './role-guard.service';
 
 const routes: Routes = [
-    {path: '', redirectTo: 'users' , pathMatch: 'full'},
-    {path: 'roles', component: RolesComponent},
-    {path: 'users', component: UserListComponent },
-    {path: 'branches', component: BranchListComponent},
-    {path: 'candidates', component: CandidateListComponent},
-    {path: 'directors', component: DirectorListComponent},
-    {path: 'mis', component: MisDataListComponent},
-    {path: 'ids', component: IdListComponent},
-    {path: 'issue-ids', component: IssueIdListComponent},
-    {path: 'dsrBsnl', component: DsrBsnlComponent},
-    {path: 'dsrVodafone', component: DsrVodafoneComponent},
-    {path: 'operator', component: OperatorComponent},
-    {path: 'operatortypes', component: OperatortypeComponent}
+
+    {path: 'roles', component: RolesComponent, canActivate: [RoleGuardService], data: { expectedRole : 'ROLE_ADMIN'} },
+    {path: 'users', component: UserListComponent, canActivate: [RoleGuardService], data: { expectedRole : 'ROLE_ADMIN'}  },
+    {path: 'branches', component: BranchListComponent, canActivate: [UrlPermission]},
+    {path: 'candidates', component: CandidateListComponent, canActivate: [UrlPermission]},
+    {path: 'directors', component: DirectorListComponent, canActivate: [UrlPermission]},
+    {path: 'mis', component: MisDataListComponent, canActivate: [UrlPermission]},
+    {path: 'ids', component: IdListComponent, canActivate: [UrlPermission]},
+    {path: 'issue-ids', component: IssueIdListComponent, canActivate: [UrlPermission]},
+    {path: 'dsrBsnl', component: DsrBsnlComponent, canActivate: [UrlPermission]},
+    {path: 'dsrVodafone', component: DsrVodafoneComponent, canActivate: [UrlPermission]},
+    {path: 'operator', component: OperatorComponent, canActivate: [UrlPermission]},
+    {path: 'operatortypes', component: OperatortypeComponent, canActivate: [UrlPermission]},
+    {path: 'login', component: LoginComponent },
+    {path: '', redirectTo: '/candidates', pathMatch: 'full' },
+    {path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

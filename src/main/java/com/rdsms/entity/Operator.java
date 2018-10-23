@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -59,10 +64,14 @@ public class Operator implements Serializable{
 	@Column(name="UpdatedOn")
 	private Date updatedOn;
 	
-	@JsonIgnore
-	@OneToMany
+	/*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "operatorTypeId")
-	private Set<OperatorType> operatorType;
+	@JsonIgnore
+	//@OneToMany
+	//@JoinColumn(name = "operatorTypeId")
+	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "operatorTypeId")
+	//@OnDelete(action = OnDeleteAction.CASCADE)
+	private Set<OperatorType> operatorType;*/
 
 	public int getOperatorId() {
 		return operatorId;
@@ -129,7 +138,7 @@ public class Operator implements Serializable{
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
-	
+	/*
 	public Set<OperatorType> getOperatorType() {
 		return operatorType;
 	}
@@ -137,7 +146,7 @@ public class Operator implements Serializable{
 	public void setOperatorType(Set<OperatorType> operatorType) {
 		this.operatorType = operatorType;
 	}
-
+*/
 	@Override
 	public String toString() {
 		return "Operator [operatorId=" + operatorId + ", operatorName=" + operatorName + ", description=" + description
