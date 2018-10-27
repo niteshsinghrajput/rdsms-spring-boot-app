@@ -6,8 +6,7 @@
       <div style="float:left;">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#operatorModal" (click)="onAddNew();">
           <i class="fa fa-plus" aria-hidden="true"></i></button>
-          <input type="text" id="searchbox" value="Enter Operator Name to Search" class="search-box"/>
-          <button type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <input type="text" id="searchbox" [(ngModel)]="searchText" placeholder="Enter Operator Name to Search" class="search-box"/>
           <div style="float:right;" *ngIf="this.displayMessage" class="alert alert-success">
             {{ this.message }}
           </div>
@@ -34,7 +33,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor = "let operator of operators">
+            <tr *ngFor = "let operator of operators | operatorFilter : searchText">
               <td>{{ operator.operatorId }}</td>
               <td>{{ operator.operatorName }}</td>
               <td>{{ operator.description }}</td>

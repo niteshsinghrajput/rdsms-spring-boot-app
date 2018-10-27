@@ -45,6 +45,9 @@ import { CandidateFilterPipe } from './filters/candidate.filter.pipe';
 import { IdFilterPipe } from './filters/id.filter.pipe';
 import { IssueIdFilterPipe } from './filters/issue-id.filter.pipe';
 import { DirectorFilterPipe } from './filters/director.filter.pipe';
+import { OperatorFilterPipe } from './filters/operator.filter.pipe';
+import { OperatorTypeFilterPipe } from './filters/operatortype.filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +57,8 @@ import { DirectorFilterPipe } from './filters/director.filter.pipe';
     CandidateFormComponent, DirectorFormComponent, OperatorComponent, OperatortypeComponent,
     OperatorFormComponent, OperatortypeFormComponent, IdListComponent, IdFormComponent, IssueIdFormComponent,
     IssueIdListComponent, LoginComponent, LoginLogoutComponent, RoleFilterPipe, UserFilterPipe, BranchFilterPipe,
-    CandidateFilterPipe, IdFilterPipe, IssueIdFilterPipe, DirectorFilterPipe
+    CandidateFilterPipe, IdFilterPipe, IssueIdFilterPipe, DirectorFilterPipe, OperatorFilterPipe,
+    OperatorTypeFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ID } from '../models/id';
 
 @Pipe({
-    name: 'filter'
+    name: 'idFilter'
 })
 
 export class IdFilterPipe implements PipeTransform {
